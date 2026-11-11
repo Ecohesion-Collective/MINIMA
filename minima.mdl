@@ -1,0 +1,4037 @@
+{UTF-8}
+Accumulated Capital Damages=
+	Pessimistic capital damage function/Time damage accumulation
+	~	1/Year
+	~		|
+
+Accumulated Labour Damages=
+	Pessimistic labour damage function/Time damage accumulation
+	~	1/Year
+	~		|
+
+Accumulated Mortality Damages=
+	Optimistic mortality damage function/Time damage accumulation
+	~	1/Year
+	~		|
+
+Act Adapt Capital=
+	0
+	~	Dmnl
+	~		|
+
+Act Adapt Labour=
+	0
+	~	Dmnl
+	~		|
+
+Act Adapt Mortality=
+	0
+	~	Dmnl
+	~		|
+
+Act Capital Damages=
+	0
+	~	Dmnl
+	~	0: No impacts
+		1: Smooth, and Pessimistic (Damage Function) impacts
+		2: Smooth, and Optimistic (Damage Function) impacts
+		3: Extreme impacts
+	|
+
+Act combine Degrowth WTR=
+	0
+	~	Dmnl
+	~	0 = WTR independent
+		1 = WTR related to degrowth
+	|
+
+Act Degrowth=
+	0
+	~	Dmnl
+	~		|
+
+Act EnEff=
+	0
+	~	Dmnl
+	~		|
+
+Act Labour Damages=
+	0
+	~	Dmnl
+	~	0: No impacts
+		1: Smooth, and Pessimistic (Damage Function) impacts
+		2: Smooth, and Optimistic (Damage Function) impacts
+		3: Extreme impacts
+	|
+
+Act MatEff=
+	0
+	~	Dmnl
+	~		|
+
+Act Mortality Damages=
+	0
+	~	Dmnl
+	~	0: No impacts
+		1: Smooth, and Pessimistic (Damage Function) impacts
+		2: Smooth, and Optimistic (Damage Function) impacts
+		3: Extreme impacts
+	|
+
+Act policy reaction temperature=
+	0
+	~	Dmnl
+	~		|
+
+Act policy reaction waste=
+	0
+	~	Dmnl
+	~		|
+
+Act Rec=
+	0
+	~	Dmnl
+	~		|
+
+Act Reforestation=
+	0
+	~	Dmnl
+	~		|
+
+Act RES=0
+	~	Dmnl
+	~		|
+
+Act Wage=
+	0
+	~	Dmnl
+	~		|
+
+Act WTR=
+	0
+	~	Dmnl
+	~		|
+
+Activate Adaptation Capital=
+	if then else(Time>Time policy,Act Adapt Capital,0)
+	~	Dmnl
+	~		|
+
+Activate Adaptation Labour=
+	if then else(Time>Time policy,Act Adapt Labour,0)
+	~	Dmnl
+	~		|
+
+Activate Adaptation Mortality=
+	if then else(Time>Time policy,Act Adapt Mortality,0)
+	~	Dmnl
+	~		|
+
+Activate degrowth policy=
+	if then else(Time>Time policy,Act Degrowth,0)
+	~	Dmnl
+	~		|
+
+Activate En Eff=
+	if then else(Time>Time policy,Act EnEff,0)
+	~	Dmnl
+	~		|
+
+Activate Material Efficiency=
+	if then else(Time>Time policy,Act MatEff,0)
+	~	Dmnl
+	~		|
+
+Activate Recycling=
+	if then else(Time>Time policy,Act Rec,0)
+	~	Dmnl
+	~		|
+
+Activate Reforestation=
+	if then else(Time>Time policy,Act Reforestation,0)
+	~	Dmnl
+	~		|
+
+Activate RES Expansion=
+	if then else(Time>Time policy,Act RES,0)
+	~	Dmnl
+	~		|
+
+Activate Wage Increase=
+	if then else(Time>Time policy,Act Wage,0)
+	~	Dmnl
+	~		|
+
+Activate WTR=
+	if then else(Time>Time policy,Act WTR,0)
+	~	Dmnl
+	~		|
+
+Adaptation Capital Policy=
+	Adaptation coefficient*Activate Adaptation Capital*(Time-Time policy)
+	~	Dmnl
+	~		|
+
+Adaptation coefficient=
+	0.005
+	~	1/Year
+	~		|
+
+Adaptation cost=
+	Desired adaptation cost*Rationing rule
+	~	Euro/Year
+	~		|
+
+Adaptation Labour Policy=
+	Adaptation coefficient*Activate Adaptation Labour*(Time-Time policy)
+	~	Dmnl
+	~		|
+
+Adaptation Mortality Policy=
+	Adaptation coefficient*Activate Adaptation Mortality*(Time-Time policy)
+	~	Dmnl
+	~		|
+
+Annual wage=
+	 if then else(Time=0, Initial wage,
+	    Annual wage delay * (1 + Wage growth + Wage growth policy)
+	  )
+	~	Current euro/Person/Year
+	~	Base wage*((1+Wage sensitivity*(Threshold unemployment-Unemployment rate delay)+Wage \
+		sensitivity
+		*Labour productivity growth after damages)
+		+Wage growth policy*Time
+		)
+	|
+
+Annual wage delay= DELAY FIXED (
+	 Annual wage , 1 , Initial wage)
+	~	Current euro/Person/Year
+	~		|
+
+Annual wage index=
+	Annual wage/Initial wage
+	~	1
+	~		|
+
+Banks capital account=
+	Net change in Loans-Change in deposits
+	~	Current euro/Year
+	~		|
+
+Base adaptation cost=
+	50
+	~	Euro/Year
+	~		|
+
+Base depreciation rate=
+	0.01
+	~	1/Year
+	~		|
+
+Base energy intensity=
+	0.015
+	~	TJ/Euro
+	~		|
+
+Base labour productivity=
+	0.25
+	~	Euro/Person/Year
+	~		|
+
+Base labour productivity growth=
+	0.002
+	~	Euro/Person/Year/Year
+	~		|
+
+Base mark up=
+	Initial mark up*(1-Mark up reduction policy)
+	~	Dmnl
+	~		|
+
+Base material intensity=
+	0.01
+	~	Ton/Euro
+	~		|
+
+Base mortality rate=
+	0.01
+	~	1/Year
+	~		|
+
+Base participation rate=
+	0.79
+	~	Dmnl
+	~	0.790514
+	|
+
+Births=
+	Natality rate*Population
+	~	Person/Year
+	~		|
+
+Bonds interest payment=
+	Interest rate*Stock of bonds
+	~	Current euro/Year
+	~		|
+
+Capacity factor fossil=
+	0.4
+	~	1/Year
+	~		|
+
+Capacity factor materials=
+	0.06
+	~	1/Year
+	~		|
+
+Capacity utilization=
+	ZIDZ(Final demand delay,K Potential Output delay)
+	~	Dmnl
+	~		|
+
+Capital damages=
+	if then else(Act Capital Damages=0,0,if then else(Act Capital Damages=1,Pessimistic capital damage function
+,if then else(Act Capital Damages=2, Optimistic capital damage function, Capital Extreme Event Shock
+	)))*Capital impacts reduction due to adaptation
+	~	Dmnl
+	~		|
+
+Capital ER= INTEG (
+	Inv ER-Depreciation ER,
+		Initial Capital ER)
+	~	Euro
+	~		|
+
+Capital Extreme Event Shock=
+	min(1,if then else(Mean temperature increase >3 :AND: Mean temperature increase < 3.2
+,
+	                     Capital Extreme Events, 0))
+	~	Dmnl
+	~	This extreme climate shock appears when Temperature Increase reaches 3ºC, \
+		reflecting the idea of dramatic and abrupt changes when temperature \
+		increases are beyond 2.5ºC, according to Dangerous Climate Change \
+		literature.
+	|
+
+Capital Extreme Events= INTEG (
+	Accumulated Capital Damages,
+		0)
+	~	Dmnl
+	~		|
+
+Capital impacts reduction due to adaptation=
+	(1-Adaptation Capital Policy)
+	~	Dmnl
+	~		|
+
+Capital income=
+	Distributed profits+Loans interest payment+Bonds interest payment
+	~	Current euro/Year
+	~		|
+
+Capital MR= INTEG (
+	Inv MR-Depreciation MR,
+		Initial captial MR)
+	~	Euro
+	~		|
+
+Capital O= INTEG (
+	Inv O-Depreciation O,
+		Initial Capital O
+		)
+	~	Euro
+	~		|
+
+Capital Productivity=
+	Output/total Capital stock
+	~	1/Year
+	~		|
+
+Capital productivity recycling=
+	Capital productivity recycling base*(1+Recycling Improvements)
+	~	Ton/Euro/Year
+	~		|
+
+Capital productivity recycling base=
+	0.03
+	~	Ton/Euro/Year
+	~		|
+
+Capital productivity Renewable Energy=
+	0.035
+	~	TJ/Euro/Year
+	~		|
+
+Capital share=
+	1-Labour share
+	~	Dmnl
+	~		|
+
+Carbon intensity=
+	Fossil emissions/Output
+	~	Ton/Euro
+	~		|
+
+Carbon sequestration=
+	Forests*Maximum forest regeneration rate*
+	(1-Forests/(Forest carrying capacity*(1+Reforestation)))
+	~	Ton/Year
+	~		|
+
+Change in deposits=
+	Change in Wealth-New bonds
+	~	Current euro/Year
+	~		|
+
+Change in Wealth=
+	Savings
+	~	Current euro/Year
+	~		|
+
+CO2= INTEG (
+	Fossil emissions+Land use emissions-Carbon sequestration,
+		Initial CO2)
+	~	Ton
+	~		|
+
+CO2 intensity=
+	0.2
+	~	Ton/TJ
+	~		|
+
+Consumption=
+	desired consumption *Rationing rule
+	~	Euro/Year
+	~		|
+
+Consumption propensity of capital income=
+	0.3*Degrowth
+	~	Dmnl
+	~		|
+
+Consumption propensity of labour income=
+	0.882728
+	*Degrowth
+	~	Dmnl
+	~	0.857118
+	|
+
+Consumption propensity of wealth=
+	0.005
+	~	1/Year
+	~		|
+
+Cumulative emissions= INTEG (
+	Fossil emissions+Land use emissions,
+		0)
+	~	Ton
+	~		|
+
+Cumulative output= INTEG (
+	Output,
+		0)
+	~	Euro
+	~		|
+
+Deaths=
+	Mortality rate*Population
+	~	Person/Year
+	~		|
+
+Deficit to output ratio=
+	Government deficit/Output
+	~	Current euro/Euro
+	~		|
+
+Deforestation intensity of output=
+	0.0007
+	~	Ton/Euro
+	~		|
+
+Degrowth=
+	(1-Activate degrowth policy*Degrowth rate*(Time- Time policy))
+	~	Dmnl
+	~		|
+
+Degrowth rate=
+	0.005
+	~	1/Year
+	~		|
+
+Demographic impacts reduction due to adaptation=
+	(1-Adaptation Mortality Policy)
+	~	Dmnl
+	~		|
+
+Depreciation ER=
+	Capital ER*(Depreciation rate)
+	~	Euro/Year
+	~		|
+
+Depreciation ER delay=
+	DELAY FIXED( Depreciation ER , 1 , 1 )
+	~	Euro/Year
+	~		|
+
+Depreciation MR=
+	Capital MR*Depreciation rate
+	~	Euro/Year
+	~		|
+
+Depreciation MR delay=
+	DELAY FIXED(Depreciation MR, 1 , 0.5 )
+	~	Euro/Year
+	~		|
+
+Depreciation O=
+	Capital O*Depreciation rate
+	~	Euro/Year
+	~		|
+
+Depreciation O delay=
+	DELAY FIXED(Depreciation O, 1 , 200 )
+	~	Euro/Year
+	~		|
+
+Depreciation rate=
+	Base depreciation rate*(1+Capital damages)
+	~	1/Year
+	~		|
+
+Desired adaptation cost=
+	if then else(Time<Time policy,0,
+	Act Adapt Capital*Base adaptation cost*(1+Adaptation Capital Policy)+
+	Act Adapt Mortality*Base adaptation cost*(1+Adaptation Mortality Policy)+
+	Act Adapt Labour*Base adaptation cost*(1+Adaptation Labour Policy)
+	)
+	~	Euro/Year
+	~	if then else(Time<Time policy,0,
+		(Act Adapt Capital+Act Adapt Demography+Act Adapt Labour)*Base adaptation cost*(1+max
+		(max(Adaptation Capital Policy,Adaptation Demography Policy
+		),Adaptation Labour Policy
+		)))
+		
+		if then else(Time<Time policy,0,
+		Act Adapt*Base adaptation cost*(1+max(max(Adaptation Capital Policy,Adaptation \
+		Demography Policy
+		),Adaptation Labour Policy
+		)))
+	|
+
+desired consumption=
+	Consumption propensity of capital income*(Disposable capital income delay/Price delay\
+		)
+	+Consumption propensity of labour income*(Disposable labour income delay/Price delay\
+		)
+	+Consumption propensity of wealth*(Households Wealth/Price delay)
+	~	Euro/Year
+	~		|
+
+desired final demand=
+	desired consumption+desired government spending+Desired investment+Desired adaptation cost
+	~	Euro/Year
+	~		|
+
+desired final demand delay=
+	DELAY FIXED(desired final demand, 1, Initial Final demand )
+	~	Euro/Year
+	~		|
+
+desired government spending=
+	if then else(Time=0,Initial government spending,
+	Government spending delay*(1+Government spending growth))
+	~	Euro/Year
+	~		|
+
+Desired investment=
+	Desired investment ER+Desired investment O+Desired investment MR
+	~	Euro/Year
+	~		|
+
+Desired investment ER=
+	min(Inv ER maximum,Planned Inv ER+Inv ER Policy)
+	~	Euro/Year
+	~		|
+
+Desired investment MR=
+	(min(Inv MR maximum,Planned Inv MR))
+	~	Euro/Year
+	~		|
+
+Desired investment O=
+	(Inv O delay*(1+Economic growth delay)
+	*(1+Investment sensitivity to utilization gap*(Capacity utilization-Normal capacity)
+	))
+	~	Euro/Year
+	~		|
+
+desired recycling share=
+	max(max(M desired source constraint closure,M desired sink constraint closure)
+	,desired recycling share delayed)
+	~	Dmnl
+	~		|
+
+desired recycling share delayed= DELAY FIXED (
+	desired recycling share, 1, initial desired recycling share)
+	~	1
+	~		|
+
+desired renewable share=
+	max(max(E desired source constraint closure,E desired sink constraint closure)
+	,desired renewable share delayed)
+	~	Dmnl
+	~		|
+
+desired renewable share delayed=
+	DELAY FIXED(desired renewable share, 1, Initial desired renewable share)
+	~	Dmnl
+	~		|
+
+Direct disposal=
+	(Materials extraction+Recycled materials)*Direct disposal share
+	~	Ton/Year
+	~		|
+
+Direct disposal share=
+	(Consumption+Total government spending)/Final demand
+	~	Dmnl
+	~		|
+
+Disposable capital income=
+	Capital income*(1-Income tax rate)
+	~	Current euro/Year
+	~		|
+
+Disposable capital income delay= DELAY FIXED (
+	Disposable capital income, 1 , Initial disposable capital income)
+	~	Current euro/Year
+	~		|
+
+Disposable labour income=
+	Labour income*(1-Income tax rate)
+	~	Current euro/Year
+	~		|
+
+Disposable labour income delay=
+	DELAY FIXED(Disposable labour income, 1 , Initial disposable labour income)
+	~	Current euro/Year
+	~		|
+
+Disposal=
+	(Direct disposal+Depreciation rate*Socioeconomic Stock)
+	*(1-Fraction of material disposal that is lost)
+	~	Ton/Year
+	~		|
+
+Distributed profits=
+	Post interest profits-Loans payment
+	~	Current euro/Year
+	~		|
+
+E constraint tightness=
+	Output/E Potential Output
+	~	Dmnl
+	~		|
+
+E constraint tightness delay= DELAY FIXED (
+	E constraint tightness, 1, initial constraints tightness)
+	~	Dmnl
+	~		|
+
+E desired sink constraint closure=
+	Act policy reaction temperature*Relative to max temperature increase^Reaction exponent
+	~	Dmnl
+	~		|
+
+E desired source constraint closure=
+	E constraint tightness delay^Reaction exponent
+	~	Dmnl
+	~		|
+
+E Potential Output=
+	(Maximum renewable energy generation+Maximum fossil generation)/Energy intensity output
+	~	Euro/Year
+	~		|
+
+Economic growth=
+	(Output-Output delay)/Output delay
+	~	Dmnl
+	~		|
+
+Economic growth delay=
+	DELAY FIXED(Economic growth, 1 , 0 )
+	~	Dmnl
+	~		|
+
+Emissions per capita=
+	(Fossil emissions+Land use emissions)/Population
+	~	Ton/(Year*Person)
+	~		|
+
+Employment=
+	min(Output/(Working time index*Labour productivity),Labour force)
+	~	Person
+	~	min(Output/(working_time_reduction*Labour_productivity),Labour_force)*
+		(1-max(0,Labour_damages*Labour_impacts_reduction_due_to_adaptation))
+	|
+
+Energy demand=
+	Energy intensity output*Output
+	~	TJ/Year
+	~		|
+
+Energy Efficiency=
+	Activate En Eff*(Energy efficiency rate*(Time-Time policy))
+	~	Dmnl
+	~		|
+
+Energy efficiency rate=
+	0.0055
+	~	1/Year
+	~		|
+
+Energy intensity output=
+	Base energy intensity*(1-Energy Efficiency)
+	~	TJ/Euro
+	~		|
+
+Final demand=
+	Investment+Consumption+Total government spending
+	~	Euro/Year
+	~		|
+
+Final demand delay= DELAY FIXED (
+	Final demand,1,Initial Final demand)
+	~	Euro/Year
+	~		|
+
+Firms capital account=
+	-Nominal investment
+	+Loans payment
+	+Net change in Loans
+	~	Current euro/Year
+	~		|
+
+Firms current account=
+	Nominal consumption+Nominal government spending+Nominal investment-
+	(Labour income+Loans interest payment+Post interest profits)
+	~	Current euro/Year
+	~		|
+
+Forest carrying capacity=
+	30000
+	~	Ton
+	~		|
+
+Forests= INTEG (
+	Carbon sequestration-Land use emissions,
+		Initial Forest stock)
+	~	Ton
+	~		|
+
+Fossil emissions=
+	CO2 intensity*Fossil energy
+	~	Ton/Year
+	~		|
+
+Fossil energy=
+	min(max(Energy demand-Renewable Energy,0),Maximum fossil generation)
+	~	TJ/Year
+	~		|
+
+Fossil energy content=
+	10
+	~	TJ/Ton
+	~		|
+
+Fossil extraction=
+	Fossil energy/Fossil energy content
+	~	Ton/Year
+	~		|
+
+Fossils= INTEG (
+	-Fossil extraction,
+		Initial fossil stock)
+	~	Ton
+	~		|
+
+Fraction of material disposal that is lost=
+	0.05
+	~	Dmnl
+	~		|
+
+Government current account=
+	Nominal government spending+Bonds interest payment-New bonds-Income taxes
+	~	Current euro/Year
+	~		|
+
+Government deficit=
+	Nominal government spending+Bonds interest payment-Income taxes
+	~	Current euro/Year
+	~		|
+
+Government spending=
+	(desired government spending)*Rationing rule
+	~	Euro/Year
+	~		|
+
+Government spending delay= DELAY FIXED (
+	Government spending,1,Initial government spending)
+	~	Euro/Year
+	~		|
+
+Government spending growth=
+	0.01
+	~	Dmnl
+	~		|
+
+Households transactions=
+	Labour income+Capital income-Income taxes-(Nominal consumption+Change in deposits+
+New bonds
+	)
+	~	Current euro/Year
+	~		|
+
+Households Wealth= INTEG (
+	Change in Wealth,
+		Initial bonds+Initial Deposit)
+	~	Current euro
+	~		|
+
+Income tax rate=
+	0.15
+	~	Dmnl
+	~		|
+
+Income taxes=
+	Income tax rate*(Labour income+Capital income)
+	~	Current euro/Year
+	~		|
+
+Inflation=
+	Price/Price delay-1
+	~	Dmnl
+	~		|
+
+Inflation delay=
+	DELAY FIXED(Inflation, 1 , 0 )
+	~	Dmnl
+	~		|
+
+Initial bonds=
+	0
+	~	Current euro
+	~		|
+
+Initial Capital ER=
+	100
+	~	Euro
+	~		|
+
+Initial Capital O=
+	20000
+	~	Euro
+	~		|
+
+Initial captial MR=
+	50
+	~	Euro
+	~		|
+
+Initial CO2=
+	1000
+	~	Ton
+	~		|
+
+initial constraints tightness=
+	0
+	~	Dmnl
+	~		|
+
+Initial Deposit=
+	1000
+	~	Current euro
+	~		|
+
+initial desired recycling share=
+	Initial recycled materials share
+	~	Dmnl
+	~		|
+
+Initial desired renewable share=
+	Initial renewable energy share
+	~	Dmnl
+	~		|
+
+Initial disposable capital income=
+	1691.5
+	~	Current euro/Year
+	~		|
+
+Initial disposable labour income=
+	6800
+	~	Current euro/Year
+	~		|
+
+Initial Final demand=
+	10000
+	~	Euro/Year
+	~		|
+
+Initial Forest stock=
+	30000
+	~	Ton
+	~		|
+
+Initial fossil energy=
+	100
+	~	TJ/Year
+	~		|
+
+Initial fossil stock=
+	20000
+	~	Ton
+	~		|
+
+Initial government spending=
+	3000
+	~	Euro/Year
+	~		|
+
+Initial Inv ER=
+	12.5
+	~	Euro/Year
+	~		|
+
+Initial Inv MR=
+	1
+	~	Euro/Year
+	~		|
+
+Initial Inv O=
+	483.5
+	~	Euro/Year
+	~		|
+
+Initial Labour income=
+	8000
+	~	Current euro/Year
+	~		|
+
+Initial labour productivity=
+	0.248
+	~	Euro/Person/Year
+	~		|
+
+Initial loans=
+	1000
+	~	Current euro
+	~		|
+
+Initial mark up=
+	0.216325
+	~	Dmnl
+	~		|
+
+Initial material extraction=
+	100
+	~	Ton/Year
+	~		|
+
+Initial Material stock=
+	20000
+	~	Ton
+	~		|
+
+Initial Output=
+	10000
+	~	Euro/Year
+	~		|
+
+Initial Population=
+	55000
+	~	Person
+	~		|
+
+Initial Potential output=
+	11100
+	~	Euro/Year
+	~		|
+
+Initial real capital income= INITIAL(
+	Real capital income)
+	~	Euro/Year
+	~		|
+
+Initial real labour income= INITIAL(
+	Real labour income)
+	~	Euro/Year
+	~		|
+
+Initial real wealth= INITIAL(
+	Real wealth delay)
+	~	Euro
+	~		|
+
+Initial recycled materials share=
+	0.015
+	~	Dmnl
+	~		|
+
+Initial renewable energy share=
+	7/300
+	~	Dmnl
+	~		|
+
+Initial socioeconomic stock=
+	INITIAL(total capital stock physical)
+	~	Ton
+	~		|
+
+Initial unemployment rate=
+	0.05
+	~	Dmnl
+	~		|
+
+Initial unrecoverable waste=
+	0
+	~	Ton
+	~		|
+
+Initial wage=
+	0.2
+	~	Current euro/Person/Year
+	~		|
+
+Initial waste materials=
+	10
+	~	Ton
+	~		|
+
+Interest rate=
+	0.01
+	~	1/Year
+	~		|
+
+Inv ER=
+	Desired investment ER*Rationing rule
+	~	Euro/Year
+	~		|
+
+Inv ER maximum=
+	Capital ER*max scale increase
+	~	Euro/Year
+	~		|
+
+Inv ER Policy=
+	RES expansion rate*Activate RES Expansion
+	~	Euro/Year
+	~		|
+
+Inv MR=
+	Desired investment MR*Rationing rule
+	~	Euro/Year
+	~		|
+
+Inv MR maximum=
+	Capital MR*max scale increase
+	~	Euro/Year
+	~		|
+
+Inv O=
+	Desired investment O*Rationing rule
+	~	Euro/Year
+	~		|
+
+Inv O delay= DELAY FIXED (
+	Inv O ,1 , Initial Inv O)
+	~	Euro/Year
+	~		|
+
+Investment=
+	Inv O+Inv MR+Inv ER
+	~	Euro/Year
+	~		|
+
+Investment Savings identity=
+	Nominal investment-Loans payment-Savings+Government deficit
+	~	Current euro/Year
+	~		|
+
+Investment sensitivity to utilization gap=
+	0.14
+	~	Dmnl
+	~		|
+
+K Potential Output=
+	Capital O*Output to capital ratio
+	~	Euro/Year
+	~		|
+
+K Potential Output delay=
+	DELAY FIXED(K Potential Output,1,Initial Capital O*Output to capital ratio)
+	~	Euro/Year
+	~		|
+
+L Potential Output=
+	Labour force*Labour productivity*Working time index
+	~	Euro/Year
+	~		|
+
+Labour damages=
+	(if then else(Act Labour Damages=0,0,if then else(Act Labour Damages=1,Pessimistic labour damage function
+,if then else(
+	Act Labour Damages=2, Optimistic labour damage function, Labour Extreme Event Shock
+	))))*Labour impacts reduction due to adaptation
+	~	Dmnl
+	~		|
+
+Labour Extreme Event Shock=
+	min(1,if then else(Mean temperature increase >3 :AND: Mean temperature increase < 3.2
+,
+	                     Labour Extreme Events, 0))
+	~	Dmnl
+	~	This extreme climate shock appears when Temperature Increase reaches 3ºC, \
+		reflecting the idea of dramatic and abrupt changes when temperature \
+		increases are beyond 2.5ºC, according to Dangerous Climate Change \
+		literature.
+	|
+
+Labour Extreme Events= INTEG (
+	Accumulated Labour Damages,
+		0)
+	~	Dmnl
+	~		|
+
+Labour force=
+	Population*Labour force participation rate
+	~	Person
+	~		|
+
+Labour force participation rate=
+	(Base participation rate
+	-Participation sensitivity to unemployment*Unemployment rate delay)*(1-Labour damages\
+		)
+	~	Dmnl
+	~		|
+
+Labour impacts reduction due to adaptation=
+	(1-Adaptation Labour Policy)
+	~	Dmnl
+	~		|
+
+Labour income=
+	Employment*Annual wage
+	~	Current euro/Year
+	~		|
+
+Labour income delay= DELAY FIXED (
+	Labour income, 1 , Initial Labour income)
+	~	Current euro/Year
+	~		|
+
+Labour productivity=
+	(Base labour productivity+Base labour productivity growth*Time)*(1-Labour damages)
+	~	Euro/Person/Year
+	~		|
+
+labour productivity delay= DELAY FIXED (
+	Labour productivity, 1 , Initial labour productivity)
+	~	Euro/(Person*Year)
+	~		|
+
+Labour productivity growth=
+	 (Labour productivity-labour productivity delay)/labour productivity delay
+	~	Dmnl
+	~		|
+
+Labour productivity growth delay= DELAY FIXED (
+	Labour productivity growth, 1 , 0.00806452
+	)
+	~	Dmnl
+	~		|
+
+Labour share=
+	Labour income/Nominal output
+	~	Dmnl
+	~		|
+
+Land use emissions=
+	Deforestation intensity of output*Output
+	~	Ton/Year
+	~		|
+
+Loans interest payment=
+	Interest rate*Stock of Loans
+	~	Current euro/Year
+	~		|
+
+Loans interest payment delay=
+	DELAY FIXED(Loans interest payment, 1 , 10 )
+	~	Current euro/Year
+	~		|
+
+Loans payment=
+	Stock of Loans*Loans repayment rate
+	~	Current euro/Year
+	~	Loans repayment share*Stock of Loans
+	|
+
+Loans payment delay= DELAY FIXED (
+	Loans payment, 1 , 10)
+	~	Current euro/Year
+	~		|
+
+Loans repayment rate=
+	0.01
+	~	1/Year
+	~		|
+
+Lost materials=
+	(Direct disposal+Depreciation rate*Socioeconomic Stock)
+	*Fraction of material disposal that is lost
+	~	Ton/Year
+	~		|
+
+M constraint tightness=
+	Output/M potential output
+	~	Dmnl
+	~		|
+
+M constraint tightness delay= DELAY FIXED (
+	M constraint tightness, 1, initial constraints tightness)
+	~	Dmnl
+	~		|
+
+M desired sink constraint closure=
+	Act policy reaction waste*Relative to max waste^Reaction exponent
+	~	1
+	~		|
+
+M desired source constraint closure=
+	M constraint tightness delay^Reaction exponent
+	~	Dmnl
+	~		|
+
+M potential output=
+	(Maximum materials extraction+min(Maximum materials recycling,Maximum recyclable materials stock\
+		))/Material intensity output
+	~	Euro/Year
+	~		|
+
+Mark up=
+	max(0,Mark up adjustment speed*Base mark up+(1-Mark up adjustment speed)*Mark up delay\
+		+Mark up rationing sensitivity
+	*(1-Rationing rule))
+	~	Dmnl
+	~		|
+
+Mark up adjustment speed=
+	0.05
+	~	Dmnl
+	~		|
+
+Mark up delay=
+	DELAY FIXED(Mark up, 1 ,Initial mark up )
+	~	Dmnl
+	~		|
+
+Mark up rationing sensitivity=
+	1
+	~	Dmnl
+	~		|
+
+Mark up reduction parameter=
+	0.5
+	~	Dmnl
+	~		|
+
+Mark up reduction policy=
+	Activate Wage Increase*Mark up reduction parameter
+	~	Dmnl
+	~		|
+
+Material efficiency=
+	Activate Material Efficiency*(Material efficiency rate*(Time-Time policy))
+	~	Dmnl
+	~		|
+
+Material efficiency rate=
+	0.0055
+	~	1/Year
+	~		|
+
+Material intensity output=
+	Base material intensity*(1-Material efficiency)
+	~	Ton/Euro
+	~		|
+
+Materials= INTEG (
+	-Materials extraction,
+		Initial Material stock)
+	~	Ton
+	~		|
+
+Materials demand=
+	Material intensity output*Output
+	~	Ton/Year
+	~		|
+
+Materials extraction=
+	min(Materials demand - Recycled materials, Maximum materials extraction)
+	~	Ton/Year
+	~		|
+
+max scale increase=
+	0.125
+	~	Dmnl/Year
+	~		|
+
+Max temperature goal=
+	2
+	~	Celsius
+	~		|
+
+Max waste goal=
+	40000
+	~	Ton
+	~		|
+
+Maximum forest regeneration rate=
+	0.05
+	~	1/Year
+	~		|
+
+Maximum fossil generation=
+	Fossils*Capacity factor fossil*Fossil energy content
+	~	TJ/Year
+	~		|
+
+Maximum materials extraction=
+	Capacity factor materials*Materials
+	~	Ton/Year
+	~		|
+
+Maximum materials recycling=
+	Capital MR*Capital productivity recycling
+	~	Ton/Year
+	~		|
+
+Maximum recyclable materials stock=
+	Maximum recycling capacity*Waste materials
+	~	Ton/Year
+	~		|
+
+Maximum recycling capacity=
+	0.2
+	~	Dmnl/Year
+	~		|
+
+Maximum renewable energy generation=
+	Capital ER*Capital productivity Renewable Energy
+	~	TJ/Year
+	~		|
+
+Maximum useful MR capital=
+	Maximum recyclable materials stock/Capital productivity recycling
+	~	Euro
+	~		|
+
+Mean temperature=
+	Preindustrial temperature+Temperature sensitivity to CO2 increase*((CO2/Initial CO2)
+-1)
+	~	Celsius
+	~		|
+
+Mean temperature increase=
+	Mean temperature-Preindustrial temperature
+	~	Celsius
+	~		|
+
+Mortality damages=
+	if then else(Act Mortality Damages=0,0,if then else(Act Mortality Damages=1,Pessimistic mortality damage function
+, if then else(Act Mortality Damages=2,Optimistic mortality damage function, Mortality Extreme Event Shock
+	)))*(if then else(Act Mortality Damages=0,1,Demographic impacts reduction due to adaptation
+))
+	~	Dmnl
+	~		|
+
+Mortality Extreme Event Shock=
+	min(1,if then else(Mean temperature increase >3 :AND: Mean temperature increase < 3.2
+,
+	                     Mortality Extreme Events, 0))
+	~	Dmnl
+	~	This extreme climate shock appears when Temperature Increase reaches 3ºC, \
+		reflecting the idea of dramatic and abrupt changes when temperature \
+		increases are beyond 2.5ºC, according to Dangerous Climate Change \
+		literature.
+	|
+
+Mortality Extreme Events= INTEG (
+	Accumulated Mortality Damages,
+		0)
+	~	Dmnl
+	~		|
+
+Mortality rate=
+	Base mortality rate*(1+Mortality damages)
+	~	1/Year
+	~		|
+
+Natality rate=
+	0.017
+	~	1/Year
+	~	0.017
+	|
+
+Net change in Loans=
+	New loans-Loans payment
+	~	Current euro/Year
+	~		|
+
+net worth bank=
+	Stock of Loans-Stock of Deposits
+	~	Current euro
+	~		|
+
+net worth firms=
+	Price delay*(Capital ER+Capital MR+Capital O)-Stock of Loans
+	~	Current euro
+	~		|
+
+net worth government=
+	-Stock of bonds
+	~	Current euro
+	~		|
+
+net worth hh=
+	Stock of Deposits+Stock of bonds
+	~	Current euro
+	~		|
+
+net worth sum=
+	net worth bank+net worth firms+net worth government+net worth hh
+	-(Capital ER+Capital MR+Capital O)*Price delay
+	~	Current euro
+	~		|
+
+New bonds=
+	Government deficit
+	~	Current euro/Year
+	~		|
+
+New loans=
+	Nominal investment
+	~	Current euro/Year
+	~		|
+
+Nominal consumption=
+	Price*Consumption
+	~	Current euro/Year
+	~		|
+
+Nominal government spending=
+	Price*Total government spending
+	~	Current euro/Year
+	~		|
+
+Nominal investment=
+	Price*Investment
+	~	Current euro/Year
+	~		|
+
+Nominal output=
+	Output*Price
+	~	Current euro/Year
+	~		|
+
+Normal capacity=
+	0.8
+	~	Dmnl
+	~		|
+
+Normal Output=
+	K Potential Output*Normal capacity
+	~	Euro/Year
+	~		|
+
+O2 used=
+	Fossil emissions-Fossil extraction
+	~	Ton/Year
+	~		|
+
+Optimistic capital damage function=
+	(1-(1/(1+(Mean temperature increase/TPO1)^2+(Mean temperature increase/TPO2)^6.754)
+	))*0.3
+	~	Dmnl
+	~	We use the Weitzman (2012) function to represent an optimistic level of \
+		damage ( https://doi.org/10.1111/j.1467-9779.2011.01539.x). Since the \
+		Weitzman damage function represents GDP damage, we multiply this by 0.3% \
+		to represent the corresponding part affecting capital. The rest of the \
+		damage is applied to labour. We use this approach, as done in Bovari et \
+		al. (2018) (https://doi.org/10.1016/j.ecolecon.2018.01.034) given that \
+		there does not exist global damage function measuring capital losses. We \
+		also calibrate damages to be higher in labour than in capital, as \
+		literature supports (see, for instance, Burke et al., 2015).
+	|
+
+Optimistic labour damage function=
+	(1-(1/(1+(Mean temperature increase/TPO1)^2+(Mean temperature increase/TPO2)^6.754)
+	))*0.7
+	~	Dmnl
+	~	We use the Weitzman (2012) function to represent an optimistic level of \
+		damage ( https://doi.org/10.1111/j.1467-9779.2011.01539.x). Since the \
+		Weitzman damage function represents GDP damage, we multiply this by 0.7% \
+		to represent the corresponding part affecting labour. The rest of the \
+		damage is applied to capital. We use this approach, as done in Bovari et \
+		al. (2018) (https://doi.org/10.1016/j.ecolecon.2018.01.034) given that \
+		there does not exist global damage function measuring capital losses. We \
+		also calibrate damages to be higher in labour than in capital, as \
+		literature supports (see, for instance, Burke et al., 2015).
+	|
+
+Optimistic mortality damage function=
+	(TPMO1*Mean temperature increase-TPMO2*Mean temperature increase^2)/100
+	~	Dmnl
+	~	This function is calibrated to follow the Bressler et al. (2021) global \
+		damage function capturing heat and cold stress damages in mortality, for \
+		the 2.5th percentile range. See Figure 3 in \
+		https://doi.org/10.1038/s41598-021-99156-5 for details.
+	|
+
+Output=
+	Final demand
+	~	Euro/Year
+	~		|
+
+Output delay= DELAY FIXED (
+	Output, 1 ,Initial Output)
+	~	Euro/Year
+	~		|
+
+Output per capita=
+	Output/Population
+	~	Euro/(Year*Person)
+	~		|
+
+Output to capital ratio=
+	0.625
+	~	1/Year
+	~	Output to capital ratio (capital productivity)
+	|
+
+Participation sensitivity to unemployment=
+	0.2
+	~	Dmnl
+	~		|
+
+Pessimistic capital damage function=
+	(1-(1/(1+(Mean temperature increase/TPP1)^2+(Mean temperature increase/TPP2)^7.02)))
+*0.3
+	~	Dmnl
+	~	We use the Dietz and Stern (2015) function to represent an pessimistic \
+		level of damage (https://doi.org/10.1111/ecoj.12188). Since the Dietz and \
+		Stern damage function represents GDP damage, we multiply this by 0.3% to \
+		represent the corresponding part affecting capital. The rest of the damage \
+		is applied to labour. We use this approach, as done in Bovari et al. \
+		(2018) (https://doi.org/10.1016/j.ecolecon.2018.01.034) given that there \
+		does not exist global damage function measuring capital losses. We also \
+		calibrate damages to be higher in labour than in capital, as literature \
+		supports (see, for instance, Burke et al., 2015).
+	|
+
+Pessimistic labour damage function=
+	(1-(1/(1+(Mean temperature increase/TPP1)^2+(Mean temperature increase/TPP2)^7.02)))
+*0.7
+	~	Dmnl
+	~	We use the Dietz and Stern (2015) function to represent an optimistic \
+		level of damage (https://doi.org/10.1111/ecoj.12188). Since the Dietz and \
+		Stern damage function represents GDP damage, we multiply this by 0.7% to \
+		represent the corresponding part affecting labour. The rest of the damage \
+		is applied to capital. We use this approach, as done in Bovari et al. \
+		(2018) (https://doi.org/10.1016/j.ecolecon.2018.01.034) given that there \
+		does not exist global damage function measuring labour losses. We also \
+		calibrate damages to be higher in labour than in capital, as literature \
+		supports (see, for instance, Burke et al., 2015).
+	|
+
+Pessimistic mortality damage function=
+	(TPMP1*Mean temperature increase+TPMP2*Mean temperature increase^2)/100
+	~	Dmnl
+	~	This function is calibrated to follow the Bressler et al. (2021) global \
+		damage function capturing heat and cold stress damages in mortality, for \
+		the 97.5th percentile range. See Figure 3 in \
+		https://doi.org/10.1038/s41598-021-99156-5 for details.
+	|
+
+Planned Inv ER=
+	max(0,required net investment ER*Renewables net investment adjustment pace+Depreciation ER\
+		)
+	~	Euro/Year
+	~		|
+
+Planned Inv MR=
+	max(0,required net investment MR*Recycling net investment adjustment pace+Depreciation MR\
+		)
+	~	Euro/Year
+	~		|
+
+Population= INTEG (
+	Births-Deaths,
+		Initial Population)
+	~	Person
+	~		|
+
+Post interest profits=
+	Profits-Loans interest payment
+	~	Current euro/Year
+	~		|
+
+Potential output=
+	min(L Potential Output,min(min(K Potential Output,E Potential Output),M potential output
+))
+	~	Euro/Year
+	~		|
+
+Potential output delay= DELAY FIXED (
+	Potential output , 1 , Initial Potential output)
+	~	Euro/Year
+	~		|
+
+Preindustrial temperature=
+	25
+	~	Celsius
+	~		|
+
+Price=
+	(Unit labour cost+Unit debt service cost+Unit capital cost)*(1+Mark up)
+	~	Current euro/Euro
+	~		|
+
+Price delay=
+	DELAY FIXED(Price, 1 , 1 )
+	~	Current euro/Euro
+	~		|
+
+Profits=
+	Nominal output-Labour income
+	~	Current euro/Year
+	~		|
+
+Public debt to output ratio=
+	Stock of bonds/Nominal output
+	~	Year
+	~	Public debt to GDP ratio
+	|
+
+Rationing rule=
+	min(1,Potential output/desired final demand)
+	~	Dmnl
+	~		|
+
+Reaction exponent=
+	2
+	~	Dmnl
+	~		|
+
+Real capital income=
+	Capital income/Price
+	~	Euro/Year
+	~		|
+
+Real capital income index=
+	Real capital income/Initial real capital income
+	~	Dmnl
+	~		|
+
+Real consumption per capita=
+	(Consumption/Price)/Population
+	~	Euro*Euro/(Year*Current euro*Person)
+	~		|
+
+Real Government Deficit=
+	Government deficit/Price
+	~	Euro/Year
+	~		|
+
+Real labour income=
+	Labour income/Price
+	~	Euro/Year
+	~		|
+
+Real labour income index=
+	Real labour income/Initial real labour income
+	~	Dmnl
+	~		|
+
+Real wage=
+	Annual wage/Price
+	~	Euro/(Year*Person)
+	~		|
+
+Real wealth delay=
+	Households Wealth/Price delay
+	~	Euro
+	~		|
+
+Real wealth index=
+	Real wealth delay/Initial real wealth
+	~	Dmnl
+	~		|
+
+Recycled materials=
+	min(min(Maximum materials recycling,Maximum recyclable materials stock),Materials demand\
+		)
+	~	Ton/Year
+	~		|
+
+Recycled materials share=
+	Recycled materials/(Recycled materials+Materials extraction)
+	~	Dmnl
+	~		|
+
+Recycled materials share delay= DELAY FIXED (
+	Recycled materials share , 1 , Initial recycled materials share)
+	~	Dmnl
+	~		|
+
+Recycling improvement rate=
+	0.005
+	~	1/Year
+	~		|
+
+Recycling Improvements=
+	Activate Recycling*(Recycling improvement rate*(Time-Time policy))
+	~	Dmnl
+	~		|
+
+Recycling net investment adjustment pace=
+	0.3
+	~	Dmnl/Year
+	~		|
+
+Redundant equation LD=
+	Stock of Deposits-Stock of Loans
+	~	Current euro
+	~		|
+
+Reforestation=
+	Reforestation rate*Activate Reforestation
+	~	Dmnl
+	~		|
+
+Reforestation rate=
+	0.01
+	~	Dmnl
+	~		|
+
+Relative to max temperature increase=
+	min(Mean temperature increase/Max temperature goal,
+	1)
+	~	Dmnl
+	~		|
+
+Relative to max waste=
+	min((Waste materials+Unrecoverable waste)/Max waste goal
+	,1)
+	~	Dmnl
+	~		|
+
+Renewable Energy=
+	min(Maximum renewable energy generation,Energy demand)
+	~	TJ/Year
+	~		|
+
+Renewable Energy Share=
+	Renewable Energy/(Renewable Energy+Fossil energy)
+	~	Dmnl
+	~		|
+
+Renewables net investment adjustment pace=
+	0.3
+	~	Dmnl/Year
+	~		|
+
+required ER capital=
+	if then else(E constraint tightness delay<1,Output delay*(1+Economic growth delay)^2\
+		,desired final demand delay)
+	*Energy intensity output*desired renewable share/Capital productivity Renewable Energy
+	~	Euro
+	~		|
+
+required MR capital=
+	min(if then else(M constraint tightness delay<1,Output delay*(1+Economic growth delay\
+		)^2,desired final demand delay)
+	*Material intensity output*desired recycling share/Capital productivity recycling,
+	
+	Maximum useful MR capital)
+	~	Euro
+	~		|
+
+required net investment ER=
+	required ER capital-Capital ER
+	~	Euro
+	~		|
+
+required net investment MR=
+	required MR capital-Capital MR
+	~	Euro
+	~		|
+
+RES expansion rate=
+	200
+	~	Euro/Year
+	~		|
+
+Savings=
+	Disposable capital income+Disposable labour income-Nominal consumption
+	~	Current euro/Year
+	~		|
+
+Socioeconomic Stock= INTEG (
+	Materials extraction+Recycled materials-Disposal-Lost materials,
+		Initial socioeconomic stock)
+	~	Ton
+	~		|
+
+Stock of bonds= INTEG (
+	New bonds,
+		Initial bonds)
+	~	Current euro
+	~		|
+
+Stock of Deposits= INTEG (
+	Change in deposits,
+		Initial Deposit)
+	~	Current euro
+	~		|
+
+Stock of Loans= INTEG (
+	New loans-Loans payment,
+		Initial loans)
+	~	Current euro
+	~		|
+
+Temperature sensitivity to CO2 increase=
+	0.8
+	~	Celsius
+	~	2
+	|
+
+Time damage accumulation=
+	1
+	~	Year
+	~		|
+
+Time policy=
+	10
+	~	Year
+	~		|
+
+total Capital stock=
+	Capital ER+Capital MR+Capital O
+	~	Euro
+	~		|
+
+total capital stock physical=
+	total Capital stock*Material intensity output
+	~	Ton
+	~		|
+
+Total debt to output ratio=
+	(Stock of bonds+Stock of Loans)/Nominal output
+	~	Year
+	~	Total (public + private) debt to GDP ratio
+	|
+
+Total emissions=
+	Fossil emissions+Land use emissions
+	~	Ton/Year
+	~		|
+
+Total government spending=
+	Government spending+Adaptation cost
+	~	Euro/Year
+	~		|
+
+TPMO1=
+	0.9687
+	~	1/Celsius
+	~		|
+
+TPMO2=
+	0.001613
+	~	1/Celsius/Celsius
+	~		|
+
+TPMP1=
+	2.202
+	~	1/Celsius
+	~		|
+
+TPMP2=
+	0.315
+	~	1/Celsius/Celsius
+	~		|
+
+TPO1=
+	20.46
+	~	Celsius
+	~		|
+
+TPO2=
+	6.08
+	~	Celsius
+	~		|
+
+TPP1=
+	12.2
+	~	Celsius
+	~		|
+
+TPP2=
+	4
+	~	Celsius
+	~		|
+
+uc Recycling=
+	Recycled materials/Maximum materials recycling
+	~	Dmnl
+	~		|
+
+uc RES=
+	Renewable Energy/Maximum renewable energy generation
+	~	Dmnl
+	~		|
+
+Unemployment=
+	Labour force-Employment
+	~	Person
+	~		|
+
+Unemployment rate=
+	Unemployment/Labour force
+	~	Dmnl
+	~		|
+
+Unemployment rate delay= DELAY FIXED (
+	Unemployment rate , 1 , Initial unemployment rate)
+	~	Dmnl
+	~		|
+
+Unit capital cost=
+	(Depreciation ER delay+Depreciation MR delay+Depreciation O delay)*Price delay/Normal Output
+	~	Current euro/Euro
+	~		|
+
+Unit debt service cost=
+	(Loans interest payment delay)/Normal Output
+	~	Current euro/Euro
+	~	(Loans interest payment delay+Loans payment delay)/Output delay
+	|
+
+Unit labour cost=
+	Labour income delay/Output delay
+	~	Current euro/Euro
+	~		|
+
+Unrecoverable waste= INTEG (
+	Lost materials,
+		Initial unrecoverable waste)
+	~	Ton
+	~		|
+
+Wage growth=
+	Wage sensitivity inflation*Inflation delay
+	+Wage sensitivity unemployment*(1-Unemployment rate delay)
+	+Wage sensitivity productivity*Labour productivity growth delay
+	~	Dmnl
+	~		|
+
+Wage growth policy=
+	Wage growth policy rate*Activate Wage Increase
+	~	Dmnl
+	~		|
+
+Wage growth policy rate=
+	0.01
+	~	Dmnl
+	~		|
+
+Wage sensitivity inflation=
+	0.5
+	~	Dmnl
+	~	0.5
+	|
+
+Wage sensitivity productivity=
+	1
+	~	Dmnl
+	~	1
+	|
+
+Wage sensitivity unemployment=
+	0.01
+	~	Dmnl
+	~	0.01
+	|
+
+Waste materials= INTEG (
+	Disposal-Recycled materials,
+		Initial waste materials)
+	~	Ton
+	~		|
+
+Working time index=
+	1 - Activate WTR *
+		    ( (1 - Act combine Degrowth WTR) * WTR independent
+		      + Act combine Degrowth WTR* WTR degrowth )
+	~	Dmnl
+	~	1-(0.12*(Activate_WTR*ZIDZ((Time-Time policy),Time)))
+		Working time reduction: switch between independent and degrowth-linked
+	|
+
+WTR degrowth=WTR max * ((1 - Degrowth)*WTR degrowth coefficient)
+	~	Dmnl
+	~	Working time reduction proportional to degrowth intensity
+	|
+
+WTR degrowth coefficient=2.5
+	~	Dmnl
+	~		|
+
+WTR independent=
+	min( WTR max ,
+		     WTR rate * max(0, Time - Time policy) )
+	~	Dmnl
+	~	Working time reduction ramp independent of degrowth
+	|
+
+WTR max=
+	0.5
+	~	Dmnl
+	~	Maximum working time reduction
+	|
+
+WTR rate=
+	0.01
+	~	1/Year
+	~	Speed of working time reduction after policy
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Cover
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+12,1,0,913,431,258,70,3,135,0,3,-1,0,0,0,0-64-128,0-0-0,|||0-64-128,0,0,0,0,0,0
+The Minimal Nature-Integrated Macroeconomic Model -- MINIMA|<<NnN>>||<<NnN>>||<<NnN>>|Authors:|<<NnN>>||<<NnN>>|David Cano Ortiz, Till Heydenreich, Paola López-Muñoz, |<<NnN>>|Pedro Solano-Pereira Serra, Simone D'Alessandro|<<NnN>>|
+12,2,0,913,645,258,137,3,7,0,3,-1,0,0,0,0-64-128,0-0-0,|||0-64-128,0,0,256,0,0,0
+ VARIABLE COLOR CONVENTIONS|<<NnN>>||<<NnN>>|  Red: Parameters (constants)|<<NnN>>|  Blue: Delays of other variables|<<NnN>>|  Green: Policies|<<NnN>>|  Black: Endogenous and other not classified|<<NnN>>||<<NnN>>| MONETARY UNITS|<<NnN>>||<<NnN>>|  In real terms (Euro):|<<NnN>>|  - Output|<<NnN>>|  - Final demand variables|<<NnN>>|  - Non-financial stocks (capital) and their inflows/outflows|<<NnN>>||<<NnN>>|  In nominal terms (Current Euro):|<<NnN>>|  - Incomes (including wages)|<<NnN>>|  - Financial stocks an their inflows/outflows|<<NnN>>||<<NnN>>| Descriptions and explanations provided in yellow boxes.|<<NnN>>|
+12,3,0,757,300,102,17,3,7,0,3,-1,0,0,0,0-64-128,0-0-0,|||0-64-128,0,0,256,0,0,0
+ Version: 1.0|<<NnN>>|
+12,4,0,757,339,102,17,3,7,0,3,-1,0,0,0,0-64-128,0-0-0,|||0-64-128,0,0,256,0,0,0
+ Last update: 03/03/2026|<<NnN>>|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*1. Demography
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Population,710,885,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,2,48,490,885,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(627,885)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(536,885)|
+11,5,0,579,885,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,Births,579,923,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,945,888,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(887,888)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(789,888)|
+11,10,0,834,888,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Deaths,834,926,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,12,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(647,945)|
+1,13,1,11,1,0,0,0,0,64,0,-1--1--1,,1|(770,946)|
+10,14,Initial Population,709,798,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,15,14,1,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,16,Mortality rate,978,728,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,17,16,11,1,0,0,0,0,192,0,-1--1--1,,1|(878,791)|
+10,18,Natality rate,369,814,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,19,Preindustrial temperature,1360,678,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,20,Mean temperature increase,753,833,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,21,Demographic impacts reduction due to adaptation,799,408,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,22,Adaptation Mortality Policy,928,257,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+1,23,22,21,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,24,Activate Adaptation Mortality,1184,211,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,25,24,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,26,Time,1095,118,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,27,26,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,28,Time policy,868,120,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,29,28,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,30,Mortality damages,1147,626,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,31,Act Mortality Damages,1280,808,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,32,31,30,1,0,0,0,0,64,0,-1--1--1,,1|(1182,741)|
+10,33,Pessimistic mortality damage function,1193,426,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,34,33,30,1,0,0,0,0,64,0,-1--1--1,,1|(1185,524)|
+10,35,Mortality Extreme Event Shock,1375,550,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,36,35,30,1,0,0,0,0,64,0,-1--1--1,,1|(1259,606)|
+1,37,30,16,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,38,21,30,1,0,0,0,0,128,0,-1--1--1,,1|(994,491)|
+10,39,Optimistic mortality damage function,1407,669,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,40,39,30,1,0,0,0,0,128,0,-1--1--1,,1|(1256,661)|
+10,41,Adaptation coefficient,726,203,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,42,41,22,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,43,Base mortality rate,829,662,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,44,43,16,1,0,0,0,0,192,0,-1--1--1,,1|(934,681)|
+1,45,18,6,1,0,0,0,0,192,0,-1--1--1,,1|(434,882)|
+12,46,0,533,759,90,38,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The population (stock) is the difference between yearly births and deaths. Births are proportional to population at a constant natality rate.
+12,47,0,1093,800,73,31,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Deaths are proportional to population at a mortality rate affected by climate damages.
+12,48,0,735,303,84,27,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+When active, adaptation policies gradually reduce the impact of climate change on mortality rate
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*2. Energy and materials
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Output,1118,547,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,2,Energy demand,647,802,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Materials demand,1569,778,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,1,2,1,0,0,0,0,192,0,-1--1--1,,1|(847,632)|
+10,5,Fossils,519,893,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,6,48,710,890,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,7,9,5,100,0,0,22,0,192,0,-1--1--1,,1|(592,890)|
+1,8,9,6,4,0,0,22,0,192,0,-1--1--1,,1|(668,890)|
+11,9,0,630,890,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,10,Fossil extraction,630,928,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,Renewable Energy,621,1191,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,E Potential Output,111,1022,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Materials,1663,980,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,Socioeconomic Stock,2046,994,69,29,3,3,0,16,-1,0,0,0,0-0-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+1,15,17,13,100,0,0,22,0,192,0,-1--1--1,,1|(1744,981)|
+1,16,17,14,4,0,0,22,0,192,0,-1--1--1,,1|(1886,981)|
+11,17,0,1790,981,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,18,Materials extraction,1790,1019,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,19,3,18,1,0,0,0,0,192,0,-1--1--1,,1|(1732,882)|
+10,20,Waste materials,2040,1260,64,27,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,21,23,14,100,0,0,22,0,192,0,-1--1--1,,1|(2127,994)|
+1,22,23,20,4,0,0,22,0,192,0,-1--1--1,,1|(2127,1260)|
+11,23,0,2127,1063,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,24,Disposal,2127,1101,75,30,40,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,14,24,1,0,0,0,0,192,0,-1--1--1,,1|(2060,1052)|
+10,26,Maximum materials extraction,1524,984,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,27,26,18,1,0,0,0,0,192,0,-1--1--1,,1|(1673,915)|
+10,28,Maximum fossil generation,569,1067,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,29,28,12,1,0,0,0,0,128,0,-1--1--1,,1|(308,1112)|
+10,30,Renewable Energy Share,826,1103,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,31,11,30,1,0,0,0,0,128,0,-1--1--1,,1|(747,1179)|
+10,32,M potential output,1488,1245,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,33,Capacity factor fossil,312,1167,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,34,33,28,1,0,0,0,0,192,0,-1--1--1,,1|(429,1166)|
+1,35,5,28,1,0,0,0,0,192,0,-1--1--1,,1|(510,990)|
+10,36,Recycled materials share,1792,1135,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,37,18,36,1,0,0,0,0,128,0,-1--1--1,,1|(1774,1062)|
+10,38,Initial fossil stock,435,972,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,39,38,5,1,0,0,0,0,64,1,-1--1--1,,1|(469,942)|
+10,40,Initial Material stock,1551,1085,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,41,40,13,1,0,0,0,0,64,1,-1--1--1,,1|(1581,1034)|
+10,42,Initial socioeconomic stock,1970,876,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,43,42,14,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,44,Initial waste materials,2135,1420,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,45,13,26,1,0,0,0,0,192,0,-1--1--1,,1|(1576,956)|
+10,46,Capital productivity Renewable Energy,513,1472,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,47,Capacity factor materials,1510,881,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,48,47,26,1,0,0,0,0,192,0,-1--1--1,,1|(1499,920)|
+1,49,44,20,1,0,0,0,0,192,1,-1--1--1,,1|(2113,1341)|
+10,50,Energy Efficiency,384,702,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+10,51,Activate En Eff,187,703,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,52,51,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,53,Time,221,746,75,30,8,130,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,54,53,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,55,Time policy,206,661,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,56,55,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,57,Material efficiency,1252,938,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+10,58,Activate Material Efficiency,1267,760,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,59,58,57,1,0,0,0,0,64,0,-1--1--1,,1|(1240,849)|
+10,60,Time,1341,789,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,61,60,57,1,0,0,0,0,64,0,-1--1--1,,1|(1322,866)|
+10,62,Time policy,1121,789,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,63,62,57,1,0,0,0,0,64,0,-1--1--1,,1|(1150,856)|
+10,64,Recycling Improvements,1635,1647,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+10,65,Activate Recycling,1540,1741,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,66,65,64,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,67,Capital MR,1699,1550,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,68,Capital ER,390,1439,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,69,Recycled materials share delay,1606,1140,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,70,Initial recycled materials share,1673,1055,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,71,70,69,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,72,36,69,1,0,0,0,0,64,0,-1--1--1,,1|(1708,1087)|
+1,73,1,3,1,0,0,0,0,192,0,-1--1--1,,1|(1424,665)|
+1,74,26,32,1,0,0,0,0,192,0,-1--1--1,,1|(1468,1112)|
+10,75,Time,1726,1736,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,76,75,64,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,77,Time policy,1641,1760,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,78,77,64,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,79,Material efficiency rate,997,808,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,80,79,57,1,0,0,0,0,192,0,-1--1--1,,1|(1100,897)|
+10,81,Base energy intensity,414,488,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,82,Energy efficiency rate,346,608,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,83,82,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,84,Recycling improvement rate,1453,1658,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,85,84,64,1,0,0,0,0,192,0,-1--1--1,,1|(1522,1636)|
+10,86,Base material intensity,1056,1037,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,87,89,20,100,0,0,22,0,192,0,-1--1--1,,1|(1951,1260)|
+1,88,89,14,4,0,0,22,0,192,0,-1--1--1,,1|(1951,994)|
+11,89,0,1951,1179,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,90,Recycled materials,2034,1179,75,30,40,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,91,90,18,1,0,0,0,0,64,0,-1--1--1,,1|(1865,1101)|
+10,92,Fraction of material disposal that is lost,2440,1180,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+10,93,Maximum materials recycling,1715,1388,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,94,67,93,1,0,0,0,0,192,0,-1--1--1,,1|(1683,1471)|
+10,95,Capital productivity recycling,1563,1510,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,96,95,93,1,0,0,0,0,192,0,-1--1--1,,1|(1627,1434)|
+1,97,93,90,1,0,0,0,0,192,0,-1--1--1,,1|(1815,1269)|
+1,98,90,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,99,Maximum recyclable materials stock,1948,1333,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,100,Maximum recycling capacity,2062,1475,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,101,100,99,1,0,0,0,0,192,0,-1--1--1,,1|(1976,1441)|
+1,102,20,99,1,0,0,0,0,192,0,-1--1--1,,1|(2005,1310)|
+1,103,99,90,1,0,0,0,0,192,0,-1--1--1,,1|(1937,1253)|
+10,104,Inv ER,277,470,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,105,Final demand,277,470,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,106,Maximum renewable energy generation,586,1329,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,107,46,106,1,0,0,0,0,192,0,-1--1--1,,1|(621,1414)|
+1,108,68,106,1,0,0,0,0,192,0,-1--1--1,,1|(463,1378)|
+1,109,106,11,1,0,0,0,0,192,0,-1--1--1,,1|(614,1270)|
+1,110,106,12,1,0,0,0,0,192,0,-1--1--1,,1|(220,1207)|
+10,111,Unrecoverable waste,2347,992,67,25,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,112,Initial unrecoverable waste,2265,855,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,113,112,111,1,0,0,0,0,192,1,-1--1--1,,1|(2321,898)|
+1,114,116,14,100,0,0,22,0,192,0,-1--1--1,,1|(2163,982)|
+1,115,116,111,4,0,0,22,0,192,0,-1--1--1,,1|(2252,982)|
+11,116,0,2218,982,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,117,Lost materials,2218,1020,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,118,92,24,1,0,0,0,0,192,0,-1--1--1,,1|(2296,1230)|
+1,119,92,117,1,0,0,0,0,192,0,-1--1--1,,1|(2393,1091)|
+1,120,14,117,1,0,0,0,0,192,0,-1--1--1,,1|(2154,917)|
+1,121,64,95,1,0,0,0,0,192,0,-1--1--1,,1|(1627,1550)|
+10,122,uc RES,453,1190,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,123,11,122,1,0,0,0,0,192,0,-1--1--1,,1|(553,1152)|
+1,124,106,122,1,0,0,0,0,192,0,-1--1--1,,1|(488,1289)|
+10,125,Capital productivity recycling base,1383,1571,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,126,125,95,1,0,0,0,0,192,0,-1--1--1,,1|(1472,1504)|
+10,127,Depreciation rate,2310,1152,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,128,Direct disposal share,1887,754,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,129,Consumption,1967,611,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,130,Final demand,2080,690,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,131,129,128,1,0,0,0,0,192,0,-1--1--1,,1|(1965,677)|
+1,132,130,128,1,0,0,0,0,192,0,-1--1--1,,1|(2007,767)|
+10,133,Direct disposal,1847,913,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,134,18,133,1,0,0,0,0,192,0,-1--1--1,,1|(1821,976)|
+1,135,90,133,1,0,0,0,0,192,0,-1--1--1,,1|(1910,1094)|
+1,136,128,133,1,0,0,0,0,192,0,-1--1--1,,1|(1816,853)|
+1,137,133,117,1,0,0,0,0,192,0,-1--1--1,,1|(2055,808)|
+1,138,133,24,1,0,0,0,0,192,0,-1--1--1,,1|(1963,1048)|
+10,139,Material intensity output,1264,1121,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,140,139,3,1,0,0,0,0,192,0,-1--1--1,,1|(1356,918)|
+1,141,139,32,1,0,0,0,0,192,0,-1--1--1,,1|(1345,1207)|
+10,142,Energy intensity output,565,666,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,143,81,142,1,0,0,0,0,64,0,-1--1--1,,1|(519,566)|
+1,144,142,12,1,0,0,0,0,192,0,-1--1--1,,1|(350,867)|
+1,145,142,2,1,0,0,0,0,192,0,-1--1--1,,1|(623,730)|
+1,146,50,142,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,147,2,11,1,0,0,0,0,192,0,-1--1--1,,1|(933,1012)|
+10,148,Total government spending,1735,700,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,149,148,128,1,0,0,0,0,192,0,-1--1--1,,1|(1774,760)|
+10,150,uc Recycling,1747,1194,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,151,90,150,1,0,0,0,0,192,0,-1--1--1,,1|(1866,1174)|
+1,152,93,150,1,0,0,0,0,192,0,-1--1--1,,1|(1712,1275)|
+10,153,Materials demand,2034,1126,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,154,153,90,1,0,0,0,0,192,0,-1--1--1,,1|(2053,1158)|
+1,155,93,32,1,0,0,0,0,64,0,-1--1--1,,1|(1574,1330)|
+1,156,99,32,1,0,0,0,0,64,0,-1--1--1,,1|(1708,1318)|
+1,157,86,139,1,0,0,0,0,192,0,-1--1--1,,1|(1139,1100)|
+1,158,57,139,1,0,0,0,0,192,0,-1--1--1,,1|(1201,1011)|
+10,159,Fossil energy,801,977,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,160,2,159,1,0,0,0,0,64,0,-1--1--1,,1|(761,883)|
+1,161,28,159,1,0,0,0,0,64,0,-1--1--1,,1|(691,1046)|
+1,162,11,159,1,0,0,0,0,64,0,-1--1--1,,1|(749,1101)|
+1,163,159,30,1,0,0,0,0,192,0,-1--1--1,,1|(831,1016)|
+1,164,159,10,1,0,0,0,0,192,0,-1--1--1,,1|(727,917)|
+10,165,Fossil energy content,394,891,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,166,165,10,1,0,0,0,0,192,0,-1--1--1,,1|(585,862)|
+1,167,165,28,1,0,0,0,0,192,0,-1--1--1,,1|(396,1024)|
+1,168,127,117,1,0,0,0,0,192,0,-1--1--1,,1|(2299,1105)|
+1,169,127,24,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,170,0,987,660,85,41,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Demand of energy and materials proportional to output, depending on intensity parameters. These might be modified by resource efficiency policies.
+12,171,0,1257,701,110,33,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Both sectors can use "brown" or "green" technologies: fossil energy and raw materials extraction vs. renewable energy and recycling.
+12,172,0,777,1272,81,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Energy demand is first met through renewable sources, but generation is limited by the available stock of Renewable Energy capital.
+12,173,0,634,990,81,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Fossil fuels provide the energy that cannot be met through renewables, but there is a yearly limit on fossil generation.
+12,174,0,18,1103,81,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Maximum fossil generation capacity and maximum renewable enegy generation determine the 'Energy potential output'.
+12,175,0,1849,1473,89,66,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Materials' demand is first met through recycling, but it is limited by the available stock of recycling capital (maximum materials recycling) and also by a physical limit to the stock of waste that can be recycled each year (maximum recyclable materials stock).
+12,176,0,1386,1049,74,47,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Raw materials extraction provides the materials that cannot be obtained through recycling, but there is a yearly limit to extraction.
+12,177,0,2167,758,86,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Materials used for consumption are directly disposed, while those used for investment are transformed into the socioeconomic stock.
+12,178,0,2289,1298,95,54,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+A fraction of the socioeconomic stock (given by the depreciation rate) is disposed each year. Then, a fraction of all disposal is transformed into unrecoverable waste, and the rest into potentially recyclable waste.
+12,179,0,1183,1180,81,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Maximum materials extraction and maximum recycling determine the 'Materials potential output'.
+12,180,0,1778,1653,67,31,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The productivity of recycling capital can be increased through policy.
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*3. Labour market
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Labour income,1362,72,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Annual wage,1565,929,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Employment,804,500,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Labour productivity,1099,363,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,4,3,1,0,0,0,0,192,0,-1--1--1,,1|(910,403)|
+10,6,Labour income delay,1552,100,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,7,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(1441,58)|
+10,8,Unemployment,1024,623,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,9,3,8,1,0,0,0,0,128,0,-1--1--1,,1|(890,590)|
+1,10,8,14,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,11,Annual wage delay,1733,1051,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,12,Wage growth,1311,806,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,13,2,11,1,0,0,0,0,128,0,-1--1--1,,1|(1607,991)|
+10,14,Unemployment rate,1025,735,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,Unemployment rate delay,1044,871,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,16,14,15,1,0,0,0,0,128,0,-1--1--1,,1|(1051,809)|
+10,17,Time,1104,235,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,18,17,4,1,0,0,0,0,64,0,-1--1--1,,1|(1097,319)|
+10,19,Initial unemployment rate,1054,995,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,20,19,15,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,21,Initial wage,1893,1088,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,23,Initial Labour income,1622,37,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,24,23,6,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,25,Time,1788,887,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,26,25,2,1,0,0,0,0,64,0,-1--1--1,,1|(1705,872)|
+10,27,Wage growth policy,1462,1030,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+1,28,27,2,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,29,Activate Wage Increase,1371,1217,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,30,29,27,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,31,Working time index,345,580,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,32,31,3,1,0,0,0,0,128,0,-1--1--1,,1|(572,567)|
+10,33,Activate WTR,114,678,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,34,Base labour productivity growth,1268,272,47,34,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,35,Base labour productivity,932,463,47,45,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,36,35,4,1,0,0,0,0,192,0,-1--1--1,,1|(992,402)|
+10,37,Output,651,694,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,38,37,3,1,0,0,0,0,64,0,-1--1--1,,1|(747,630)|
+10,39,Labour force participation rate,863,964,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,40,Labour force,803,719,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,41,39,40,1,0,0,0,0,128,0,-1--1--1,,1|(792,891)|
+10,42,Participation sensitivity to unemployment,628,1091,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,43,42,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,44,Base participation rate,636,1030,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,45,44,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,46,Population,493,809,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,47,46,40,1,0,0,0,0,64,0,-1--1--1,,1|(623,810)|
+1,48,15,39,1,0,0,0,0,64,0,-1--1--1,,1|(966,939)|
+1,49,40,14,1,0,0,0,0,64,0,-1--1--1,,1|(906,711)|
+1,50,40,8,1,0,0,0,0,64,0,-1--1--1,,1|(890,660)|
+1,51,40,3,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,52,Wage growth policy rate,1542,1195,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,53,52,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,54,L Potential Output,1599,222,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,55,Labour productivity,1470,343,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,56,55,54,1,0,0,0,0,128,0,-1--1--1,,1|(1505,264)|
+10,57,Labour force,1737,362,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,58,Labour productivity growth,1329,449,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,59,Labour damages,951,278,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,60,Act Labour Damages,894,58,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,61,60,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,62,Pessimistic labour damage function,632,87,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,63,62,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,64,Labour Extreme Event Shock,1045,36,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,65,64,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,66,Labour impacts reduction due to adaptation,725,274,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,67,Adaptation Labour Policy,709,402,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+1,68,67,66,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,69,Activate Adaptation Labour,470,357,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,70,69,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,71,Time,527,428,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,72,71,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,73,Time policy,522,296,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,74,73,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,75,57,54,1,0,0,0,0,128,0,-1--1--1,,1|(1685,284)|
+1,76,59,4,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,77,34,4,1,0,0,0,0,128,0,-1--1--1,,1|(1169,302)|
+10,78,labour productivity delay,1097,539,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,79,4,78,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,80,78,58,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,81,4,58,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,82,Optimistic labour damage function,760,62,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,83,82,59,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,84,66,59,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,85,Wage sensitivity inflation,1553,613,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,86,Wage sensitivity productivity,1565,702,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,87,Wage sensitivity unemployment,1571,799,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,88,85,12,1,0,0,0,0,192,0,-1--1--1,,1|(1478,693)|
+1,89,86,12,1,0,0,0,0,192,0,-1--1--1,,1|(1467,761)|
+1,90,87,12,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,91,Inflation delay,1247,636,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,92,91,12,1,0,0,0,0,192,0,-1--1--1,,1|(1295,714)|
+1,93,15,12,1,0,0,0,0,192,0,-1--1--1,,1|(1155,829)|
+10,94,Labour productivity growth delay,1400,604,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,95,58,94,1,0,0,0,0,192,0,-1--1--1,,1|(1398,532)|
+1,96,94,12,1,0,0,0,0,192,0,-1--1--1,,1|(1397,699)|
+1,97,12,2,1,0,0,0,0,192,0,-1--1--1,,1|(1462,863)|
+1,98,11,2,1,0,0,0,0,192,0,-1--1--1,,1|(1662,973)|
+1,99,21,2,1,0,0,0,0,192,0,-1--1--1,,1|(1818,973)|
+10,100,WTR rate,418,279,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,101,WTR max,136,342,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,102,WTR independent,319,425,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+1,103,101,102,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,104,100,102,1,0,0,0,0,192,0,-1--1--1,,1|(379,333)|
+10,105,Time,323,252,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,106,105,102,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,107,Time policy,234,277,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,108,107,102,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,109,WTR degrowth,235,481,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+1,110,101,109,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,111,Degrowth,63,533,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,112,111,109,1,0,0,0,0,192,0,-1--1--1,,1|(141,531)|
+1,113,109,31,1,0,0,0,0,192,0,-1--1--1,,1|(250,536)|
+1,114,33,31,1,0,0,0,0,192,0,-1--1--1,,1|(231,654)|
+1,115,102,31,1,0,0,0,0,192,0,-1--1--1,,1|(342,504)|
+10,116,Adaptation coefficient,606,483,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,117,116,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,118,Employment,1259,-28,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,119,Annual wage,1465,-48,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,120,118,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,121,119,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,122,Annual wage index,1691,1138,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,123,2,122,1,0,0,0,0,192,0,-1--1--1,,1|(1613,1081)|
+1,124,21,122,1,0,0,0,0,192,0,-1--1--1,,1|(1841,1181)|
+10,125,Act combine Degrowth WTR,265,702,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,126,125,31,1,0,0,0,0,192,0,-1--1--1,,1|(319,654)|
+10,127,Labour damages,682,904,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,128,127,39,1,0,0,0,0,192,0,-1--1--1,,1|(718,940)|
+10,129,Real wage,1578,868,51,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,130,Working time index,1609,354,60,25,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,131,130,54,1,0,0,0,0,192,0,-1--1--1,,1|(1600,325)|
+10,132,Initial labour productivity,1019,447,55,25,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,133,132,78,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,134,WTR degrowth coefficient,-9,448,50,26,8,3,0,2,-1,1,0,0,0-0-0,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,135,134,109,1,0,0,0,0,192,0,-1--1--1,,1|(63,480)|
+12,136,0,608,614,102,35,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Employment depends on output, labor productivity, and a working time index, but is constrained by the available labor force.
+12,137,0,134,602,102,35,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Working time index is 1 unless a WTR policy is active. This can be implemented independently or as part of a degrowth policy package.
+12,138,0,1755,222,68,43,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Labor productivity, the working time index, and labor force determine the 'Labor potential output'.
+12,139,0,887,834,82,54,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Labour force is proportional to population at the labour force participation rate, which decreases with unemployment rate (lagged) and is affected by climate damages on labour.
+12,140,0,1160,736,70,43,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Unemployment is given by the difference between labor force and employment; the ratio to labor force gives the unemployment rate.
+12,141,0,1310,357,66,33,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Labour productivity grows at an exogenous linear trend but is reduced by climate damages on labour.
+12,142,0,1383,939,77,44,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Nominal wage increases with inflation, labour productivity and the complement of the unemployment rate. It can be increased exogenously by policy.
+12,143,0,1367,137,66,33,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The levels of employment and wages determine labour income.
+12,144,0,834,347,81,30,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+When active, adaptation policies gradually reduce the impact of climate change on labour productivity
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*4. Consumption and savings
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Consumption,1111,432,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Stock of Loans,85,-94,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,-74,-91,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,3,100,0,0,22,0,192,0,-1--1--1,,1|(-40,-91)|
+1,5,6,2,4,0,0,22,0,192,0,-1--1--1,,1|(19,-91)|
+11,6,0,-10,-91,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,New loans,-10,-53,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,8,48,250,-88,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,2,100,0,0,22,0,192,0,-1--1--1,,1|(147,-88)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(210,-88)|
+11,11,0,174,-88,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Loans payment,174,-50,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Loans repayment rate,324,-200,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,14,Loans interest payment,99,8,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,Interest rate,-134,56,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,16,2,14,1,0,0,0,0,192,0,-1--1--1,,1|(76,-42)|
+1,17,15,14,1,0,0,0,0,192,0,-1--1--1,,1|(-19,16)|
+10,18,Capital income,434,228,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,Savings,1496,452,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,20,Stock of Deposits,1604,828,43,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,21,14,18,1,0,0,0,0,192,0,-1--1--1,,1|(309,81)|
+10,22,Consumption propensity of labour income,1010,194,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,23,Consumption propensity of capital income,845,188,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,24,Consumption propensity of wealth,1157,232,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,25,Disposable capital income delay,779,303,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,26,Initial Deposit,1746,702,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,27,26,20,1,0,0,0,0,64,1,-1--1--1,,1|(1698,779)|
+10,28,Initial disposable capital income,606,343,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,29,28,25,1,0,0,0,0,64,1,-1--1--1,,1|(678,306)|
+10,30,Degrowth,919,77,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,31,Activate degrowth policy,1110,-53,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,32,31,30,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,33,Time,1108,-5,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,34,33,30,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,35,Time policy,1098,39,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,36,35,30,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,37,30,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,38,30,22,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,39,Government spending,-573,292,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Government spending delay,-778,293,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,41,39,40,1,0,0,0,0,192,0,-1--1--1,,1|(-684,366)|
+10,42,Government spending growth,-807,132,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,43,Initial government spending,-948,255,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,44,43,40,1,0,0,0,0,192,1,-1--1--1,,1|(-882,289)|
+10,45,Rationing rule,-743,436,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,46,45,39,1,0,0,0,0,192,0,-1--1--1,,1|(-610,376)|
+10,47,Rationing rule,1223,334,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,48,47,1,1,0,0,0,0,192,0,-1--1--1,,1|(1156,359)|
+10,49,Degrowth rate,867,-41,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,50,49,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,51,desired consumption,934,429,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,52,25,51,1,0,0,0,0,64,0,-1--1--1,,1|(870,363)|
+1,53,23,51,1,0,0,0,0,64,0,-1--1--1,,1|(907,299)|
+1,54,22,51,1,0,0,0,0,64,0,-1--1--1,,1|(955,306)|
+1,55,51,1,1,0,0,0,0,64,0,-1--1--1,,1|(1037,410)|
+10,56,desired government spending,-680,217,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,57,40,56,1,0,0,0,0,64,0,-1--1--1,,1|(-762,247)|
+1,58,42,56,1,0,0,0,0,64,0,-1--1--1,,1|(-736,155)|
+1,59,56,39,1,0,0,0,0,64,0,-1--1--1,,1|(-587,239)|
+10,60,Initial loans,95,-183,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,61,60,2,1,0,0,0,0,192,1,-1--1--1,,1|(46,-161)|
+10,62,Initial bonds,44,337,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,63,13,12,1,0,0,0,0,192,0,-1--1--1,,1|(283,-105)|
+1,64,2,12,1,0,0,0,0,192,0,-1--1--1,,1|(142,-105)|
+10,65,Bonds interest payment,93,111,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,66,15,65,1,0,0,0,0,192,0,-1--1--1,,1|(-27,57)|
+1,67,65,18,1,0,0,0,0,192,0,-1--1--1,,1|(279,139)|
+10,68,Distributed profits,507,84,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,69,68,18,1,0,0,0,0,192,0,-1--1--1,,1|(482,168)|
+10,70,Net change in Loans,80,-257,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,71,7,70,1,0,0,0,0,192,0,-1--1--1,,1|(-29,-160)|
+1,72,12,70,1,0,0,0,0,192,0,-1--1--1,,1|(202,-142)|
+12,73,48,-87,207,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,74,75,73,100,0,0,22,0,192,0,-1--1--1,,1|(-66,207)|
+11,75,0,-49,207,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,76,New bonds,-49,245,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,77,Government deficit,-235,306,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,78,65,77,1,0,0,0,0,192,0,-1--1--1,,1|(-166,171)|
+1,79,77,76,1,0,0,0,0,192,0,-1--1--1,,1|(-171,254)|
+10,80,Adaptation Capital Policy,-849,577,75,30,8,130,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,81,Desired adaptation cost,-603,582,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+1,82,80,81,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,83,Adaptation Mortality Policy,-813,517,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,84,Adaptation Labour Policy,-796,632,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,85,83,81,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,86,84,81,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,87,Disposable capital income,620,239,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,88,18,87,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,89,87,25,1,0,0,0,0,192,0,-1--1--1,,1|(675,255)|
+10,90,Labour income,436,568,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,91,Disposable labour income,615,600,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,92,90,91,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,93,Disposable labour income delay,786,544,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-128,0,0,0,0,0,0
+1,94,91,93,1,0,0,0,0,192,0,-1--1--1,,1|(683,556)|
+10,95,Initial disposable labour income,646,514,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,96,95,93,1,0,0,0,0,192,1,-1--1--1,,1|(736,501)|
+1,97,93,51,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,98,Income taxes,185,417,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,99,18,98,1,0,0,0,0,192,0,-1--1--1,,1|(277,325)|
+1,100,90,98,1,0,0,0,0,192,0,-1--1--1,,1|(332,557)|
+10,101,Income tax rate,383,412,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,102,101,98,1,0,0,0,0,192,0,-1--1--1,,1|(311,406)|
+1,103,98,77,1,0,0,0,0,192,0,-1--1--1,,1|(3,453)|
+1,104,101,87,1,0,0,0,0,192,0,-1--1--1,,1|(510,355)|
+1,105,101,91,1,0,0,0,0,192,0,-1--1--1,,1|(514,479)|
+10,106,Initial Labour income,305,699,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,107,Price delay,701,417,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,108,107,51,1,0,0,0,0,192,0,-1--1--1,,1|(794,388)|
+1,109,24,51,1,0,0,0,0,192,0,-1--1--1,,1|(1020,312)|
+10,110,Disposable capital income,1287,503,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,111,Disposable labour income,1288,567,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,112,110,19,1,0,0,0,0,192,0,-1--1--1,,1|(1390,502)|
+1,113,111,19,1,0,0,0,0,192,0,-1--1--1,,1|(1405,535)|
+10,114,Nominal consumption,1291,438,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,115,Price,1396,342,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,116,115,114,1,0,0,0,0,192,0,-1--1--1,,1|(1358,394)|
+1,117,1,114,1,0,0,0,0,192,0,-1--1--1,,1|(1209,413)|
+1,118,114,19,1,0,0,0,0,192,0,-1--1--1,,1|(1385,415)|
+10,119,Nominal government spending,-348,391,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,120,Price,-405,477,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,121,120,119,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,122,119,77,1,0,0,0,0,192,0,-1--1--1,,1|(-274,366)|
+10,123,Nominal investment,-209,-98,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,124,123,7,1,0,0,0,0,192,0,-1--1--1,,1|(-160,-53)|
+10,125,Base adaptation cost,-640,713,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,126,125,81,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,127,43,56,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,128,Time,-994,173,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,129,128,56,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,130,Time,-516,681,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,131,130,81,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,132,Time policy,-364,648,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,133,132,81,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,134,Real capital income,428,321,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,135,Real labour income,300,619,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,136,18,134,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,137,90,135,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,138,Price,302,358,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,139,Price,170,545,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,140,139,135,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,141,138,134,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,142,Initial real capital income,-182,771,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,143,Initial real labour income,-172,854,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,144,Real capital income index,-7,770,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,145,Real labour income index,-22,851,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,146,Real capital income,-185,696,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,147,Real labour income,-346,863,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,148,146,142,1,0,0,0,0,192,1,-1--1--1,,1|(-168,715)|
+1,149,142,144,1,0,0,0,0,192,0,-1--1--1,,1|(-86,718)|
+1,150,146,144,1,0,0,0,0,192,0,-1--1--1,,1|(-105,674)|
+1,151,147,143,1,0,0,0,0,192,1,-1--1--1,,1|(-274,887)|
+1,152,143,145,1,0,0,0,0,192,0,-1--1--1,,1|(-133,895)|
+1,153,147,145,1,0,0,0,0,192,0,-1--1--1,,1|(-167,917)|
+10,154,Households Wealth,1604,603,48,25,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,155,48,1427,593,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,156,158,155,100,0,0,22,0,192,0,-1--1--1,,1|(1463,593)|
+1,157,158,154,4,0,0,22,0,192,0,-1--1--1,,1|(1529,593)|
+11,158,0,1496,593,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,159,Change in Wealth,1496,631,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,160,26,154,1,0,0,0,0,192,1,-1--1--1,,1|(1690,645)|
+10,161,Initial bonds,1802,550,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,162,161,154,1,0,0,0,0,192,1,-1--1--1,,1|(1710,585)|
+1,163,19,159,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,164,New bonds,1368,733,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,165,154,51,1,0,0,0,0,192,0,-1--1--1,,1|(1589,533)|
+10,166,Act Adapt Capital,-793,767,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,167,166,81,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,168,Act Adapt Mortality,-736,658,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,169,168,81,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,170,Act Adapt Labour,-709,504,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,171,170,81,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+12,172,48,1408,816,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,173,175,172,100,0,0,22,0,192,0,-1--1--1,,1|(1455,816)|
+1,174,175,20,4,0,0,22,0,192,0,-1--1--1,,1|(1532,816)|
+11,175,0,1498,816,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,176,Change in deposits,1498,854,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,177,159,176,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,178,164,176,1,0,0,0,0,192,0,-1--1--1,,1|(1443,774)|
+10,179,Loans interest payment delay,372,38,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,180,14,179,1,0,0,0,0,192,0,-1--1--1,,1|(252,5)|
+10,181,Loans payment delay,368,-54,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,182,12,181,1,0,0,0,0,192,0,-1--1--1,,1|(275,-61)|
+10,183,Real wealth delay,1704,477,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,184,154,183,1,0,0,0,0,192,0,-1--1--1,,1|(1630,536)|
+10,185,Price delay,1792,401,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,186,185,183,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,187,Real wealth index,-27,1024,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,188,Real wealth delay,-148,1095,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,189,188,187,1,0,0,0,0,192,0,-1--1--1,,1|(-47,1076)|
+10,190,Initial real wealth,-256,1030,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,191,188,190,1,0,0,0,0,192,1,-1--1--1,,1|(-243,1088)|
+1,192,190,187,1,0,0,0,0,192,0,-1--1--1,,1|(-151,970)|
+10,193,Initial bonds,-25,1014,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,194,Initial Deposit,-25,1014,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,195,Adaptation cost,-579,480,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,196,81,195,1,0,0,0,0,192,0,-1--1--1,,1|(-609,531)|
+10,197,Total government spending,-512,393,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,198,197,119,1,0,0,0,0,192,0,-1--1--1,,1|(-417,355)|
+1,199,45,195,1,0,0,0,0,192,0,-1--1--1,,1|(-627,441)|
+1,200,39,197,1,0,0,0,0,192,0,-1--1--1,,1|(-555,350)|
+1,201,195,197,1,0,0,0,0,192,0,-1--1--1,,1|(-572,437)|
+10,202,Stock of bonds,91,205,62,30,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,203,75,202,4,0,0,22,0,192,0,-1--1--1,,1|(-7,207)|
+1,204,202,65,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,205,62,202,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+12,206,0,-882,381,77,40,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Government spending grows at an exogenous rate, but is also increased by the nubmer of adaptation policies active.
+12,207,0,-90,322,77,40,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Government deficit (spending including interest payments, minus tax revenues) is financed by issuing bonds.
+12,208,0,347,475,75,30,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Government revenues come from taxing labour and capital income, at the same exogenous tax rate.
+12,209,0,579,419,54,26,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Disposable income is income after taxes.
+12,210,0,-135,-169,73,32,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Total investment is financed with new loans, which are repaid at an exogenous rate.
+12,211,0,246,206,77,40,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Bonds are perpetuities, the principal is never repaid and public debt service is only interest.
+12,212,0,613,159,73,32,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Interest payments (from bonds and loans) and distributed profits constitute capital income.
+12,213,0,963,538,85,51,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Households consume fractions of their (lagged) real capital and labor disposable incomes, and of their outstanding wealth, at differentiated exogenous propensities to consume.
+12,214,0,1088,114,72,32,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Propensities to consume out of income can be reduced by a degrowth policy.
+12,215,0,1254,658,96,55,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Savings are disposable household income minus consumption, and are accumulated into Household wealth. It is allocated first to bonds (by buying all government bonds issuance), and the rest is held as deposits.
+12,216,0,-880,473,123,28,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Government spending and households' consumption are constrained by the rationing rule.
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*5. Capital and investment
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Investment,400,-857,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Capital O,1749,-480,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1594,-487,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,3,100,0,0,22,0,192,0,-1--1--1,,1|(1626,-487)|
+1,5,6,2,4,0,0,22,0,192,0,-1--1--1,,1|(1684,-487)|
+11,6,0,1655,-487,6,10,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Inv O,1655,-447,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,8,48,1970,-480,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,2,100,0,0,22,0,192,0,-1--1--1,,1|(1834,-480)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1924,-480)|
+11,11,0,1883,-480,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Depreciation O,1883,-442,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Investment sensitivity to utilization gap,1305,-325,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,14,Normal capacity,1405,-524,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,15,Capital ER,1742,-15,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,Capital MR,1747,429,44,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,17,48,1540,-18,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,20,17,100,0,0,22,0,192,0,-1--1--1,,1|(1580,-18)|
+1,19,20,15,4,0,0,22,0,192,0,-1--1--1,,1|(1661,-18)|
+11,20,0,1616,-18,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,21,Inv ER,1616,20,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,22,48,1617,425,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,23,25,22,100,0,0,22,0,192,0,-1--1--1,,1|(1636,425)|
+1,24,25,16,4,0,0,22,0,192,0,-1--1--1,,1|(1680,425)|
+11,25,0,1652,425,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,26,Inv MR,1652,463,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,27,2,12,1,0,0,0,0,64,0,-1--1--1,,1|(1855,-478)|
+12,28,48,1929,-15,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,29,31,15,100,0,0,22,0,192,0,-1--1--1,,1|(1826,-15)|
+1,30,31,28,4,0,0,22,0,192,0,-1--1--1,,1|(1899,-15)|
+11,31,0,1874,-15,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,32,Depreciation ER,1874,23,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,33,48,1966,427,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,34,36,16,100,0,0,22,0,192,0,-1--1--1,,1|(1827,427)|
+1,35,36,33,4,0,0,22,0,192,0,-1--1--1,,1|(1915,427)|
+11,36,0,1869,427,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,37,Depreciation MR,1869,465,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,38,15,32,1,0,0,0,0,192,0,-1--1--1,,1|(1797,17)|
+1,39,16,37,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,40,Planned Inv ER,1726,-137,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Inv ER maximum,1573,81,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Inv MR maximum,1571,319,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,43,178,2,1,0,0,0,0,64,1,-1--1--1,,1|(1883,-580)|
+10,44,Initial Capital ER,1826,76,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,45,44,15,1,0,0,0,0,64,1,-1--1--1,,1|(1772,50)|
+10,46,Initial captial MR,1821,315,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,47,46,16,1,0,0,0,0,64,1,-1--1--1,,1|(1759,348)|
+10,48,Inv O delay,1681,-371,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,49,7,48,1,0,0,0,0,128,0,-1--1--1,,1|(1628,-408)|
+10,50,Initial Inv O,1551,-302,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,51,50,48,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,52,Planned Inv MR,1614,569,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Inv ER Policy,1275,72,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,54,Capital impacts reduction due to adaptation,2882,26,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,55,Depreciation rate,2356,-29,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,56,55,37,1,0,0,0,0,192,0,-1--1--1,,1|(2199,241)|
+1,57,55,32,1,0,0,0,0,64,0,-1--1--1,,1|(2120,35)|
+1,58,55,12,1,0,0,0,0,64,0,-1--1--1,,1|(2181,-284)|
+10,59,Activate RES Expansion,1085,23,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,60,59,53,1,0,0,0,0,64,0,-1--1--1,,1|(1188,19)|
+10,61,Adaptation Capital Policy,2974,108,75,30,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|||0-128-0,0,0,0,0,0,0
+1,62,61,54,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,63,Activate Adaptation Capital,3114,188,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,64,63,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,65,Time,3003,255,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,66,65,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,67,Time policy,2911,186,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,68,67,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,69,Recycling net investment adjustment pace,1849,712,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,70,Renewables net investment adjustment pace,1930,-116,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,71,Base depreciation rate,2428,162,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,72,71,55,1,0,0,0,0,192,0,-1--1--1,,1|(2432,68)|
+10,73,K Potential Output,1682,-570,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,74,Output to capital ratio,1747,-719,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,75,74,73,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,76,2,73,1,0,0,0,0,64,0,-1--1--1,,1|(1739,-528)|
+10,77,Capacity utilization,1355,-603,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,78,Final demand delay,1281,-717,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,79,78,77,1,0,0,0,0,64,0,-1--1--1,,1|(1337,-664)|
+10,80,Rationing rule,1907,-351,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,81,80,7,1,0,0,0,0,192,0,-1--1--1,,1|(1806,-375)|
+1,82,83,21,1,0,0,0,0,192,0,-1--1--1,,1|(1709,145)|
+10,83,Rationing rule,1723,225,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,84,83,26,1,0,0,0,0,192,0,-1--1--1,,1|(1722,291)|
+10,85,RES expansion rate,1085,138,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,86,85,53,1,0,0,0,0,192,0,-1--1--1,,1|(1188,133)|
+10,87,Desired investment O,1314,-432,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,88,Desired investment ER,1392,-44,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,89,Desired investment MR,1342,439,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,90,Desired investment,489,-640,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,91,77,87,1,0,0,0,0,64,0,-1--1--1,,1|(1305,-528)|
+1,92,48,87,1,0,0,0,0,64,0,-1--1--1,,1|(1495,-382)|
+1,93,13,87,1,0,0,0,0,64,0,-1--1--1,,1|(1298,-377)|
+1,94,14,87,1,0,0,0,0,64,0,-1--1--1,,1|(1351,-482)|
+1,95,40,88,1,0,0,0,0,64,0,-1--1--1,,1|(1560,-110)|
+1,96,41,88,1,0,0,0,0,64,0,-1--1--1,,1|(1468,35)|
+1,97,53,88,1,0,0,0,0,64,0,-1--1--1,,1|(1312,-10)|
+1,98,52,89,1,0,0,0,0,64,0,-1--1--1,,1|(1471,532)|
+1,99,42,89,1,0,0,0,0,64,0,-1--1--1,,1|(1453,357)|
+10,100,max scale increase,1545,210,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,101,100,41,1,0,0,0,0,192,0,-1--1--1,,1|(1597,136)|
+1,102,100,42,1,0,0,0,0,192,0,-1--1--1,,1|(1572,252)|
+1,103,15,41,1,0,0,0,0,64,0,-1--1--1,,1|(1660,39)|
+1,104,16,42,1,0,0,0,0,64,0,-1--1--1,,1|(1650,379)|
+1,105,87,7,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,106,88,21,1,0,0,0,0,64,0,-1--1--1,,1|(1507,1)|
+1,107,89,26,1,0,0,0,0,64,0,-1--1--1,,1|(1504,470)|
+10,108,Maximum recyclable materials stock,356,659,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,109,E Potential Output,-343,123,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,110,M potential output,-324,254,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,111,Output,-392,194,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,112,E constraint tightness,-120,85,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,113,M constraint tightness,-118,295,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,114,111,112,1,0,0,0,0,192,0,-1--1--1,,1|(-285,120)|
+1,115,109,112,1,0,0,0,0,192,0,-1--1--1,,1|(-180,76)|
+1,116,111,113,1,0,0,0,0,192,0,-1--1--1,,1|(-265,206)|
+1,117,110,113,1,0,0,0,0,192,0,-1--1--1,,1|(-240,285)|
+10,118,Waste materials,-49,429,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,119,E desired source constraint closure,278,84,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,120,M desired source constraint closure,292,294,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,121,Reaction exponent,464,177,75,30,8,3,0,2,-1,0,0,0,-1--1--1,0-0-0,|||255-0-0,0,0,0,0,0,0
+1,122,121,120,1,0,0,0,0,192,0,-1--1--1,,1|(405,267)|
+1,123,121,119,1,0,0,0,0,192,0,-1--1--1,,1|(446,122)|
+10,124,Relative to max temperature increase,102,-11,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,125,E desired sink constraint closure,265,-42,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,126,124,125,1,0,0,0,0,192,0,-1--1--1,,1|(224,-9)|
+1,127,121,125,1,0,0,0,0,192,0,-1--1--1,,1|(499,100)|
+10,128,Relative to max waste,125,380,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,129,118,128,1,0,0,0,0,192,0,-1--1--1,,1|(59,448)|
+10,130,M desired sink constraint closure,292,375,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,131,121,130,1,0,0,0,0,192,0,-1--1--1,,1|(475,283)|
+1,132,128,130,1,0,0,0,0,192,0,-1--1--1,,1|(218,387)|
+1,133,70,40,1,0,0,0,0,192,0,-1--1--1,,1|(1816,-178)|
+1,134,69,52,1,0,0,0,0,192,0,-1--1--1,,1|(1740,700)|
+10,135,E constraint tightness delay,74,81,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,136,M constraint tightness delay,81,305,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,137,112,135,1,0,0,0,0,192,0,-1--1--1,,1|(-61,67)|
+1,138,113,136,1,0,0,0,0,192,0,-1--1--1,,1|(-50,321)|
+1,139,136,120,1,0,0,0,0,192,0,-1--1--1,,1|(217,312)|
+1,140,135,119,1,0,0,0,0,192,0,-1--1--1,,1|(188,70)|
+10,141,Unrecoverable waste,203,474,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,142,141,128,1,0,0,0,0,192,0,-1--1--1,,1|(130,420)|
+10,143,Pessimistic capital damage function,2785,-239,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,144,Capital damages,2587,-43,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,145,143,144,1,0,0,0,0,128,0,-1--1--1,,1|(2716,-130)|
+1,146,144,55,1,0,0,0,0,128,0,-1--1--1,,1|(2456,-68)|
+10,147,Act Capital Damages,2643,-299,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,148,147,144,1,0,0,0,0,64,0,-1--1--1,,1|(2657,-165)|
+10,149,Capital Extreme Event Shock,2849,-111,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,150,149,144,1,0,0,0,0,64,0,-1--1--1,,1|(2728,-36)|
+1,151,54,144,1,0,0,0,0,128,0,-1--1--1,,1|(2729,26)|
+10,152,Nominal investment,582,-862,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,153,Price,510,-981,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,154,153,152,1,0,0,0,0,192,0,-1--1--1,,1|(515,-923)|
+1,155,1,152,1,0,0,0,0,192,0,-1--1--1,,1|(482,-821)|
+10,156,Optimistic capital damage function,2485,-213,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,157,156,144,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,158,desired renewable share,619,45,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,159,desired renewable share delayed,791,43,75,30,8,3,0,2,-1,1,0,0,0-0-0,0-0-0,|||0-128-192,0,0,0,0,0,0
+10,160,Initial desired renewable share,882,173,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,161,160,159,1,0,0,0,0,192,1,-1--1--1,,1|(852,83)|
+1,162,158,159,1,0,0,0,0,192,0,-1--1--1,,1|(687,103)|
+1,163,159,158,1,0,0,0,0,192,0,-1--1--1,,1|(692,-25)|
+1,164,125,158,1,0,0,0,0,192,0,-1--1--1,,1|(433,-35)|
+1,165,119,158,1,0,0,0,0,192,0,-1--1--1,,1|(415,8)|
+10,166,initial constraints tightness,-110,186,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,167,166,135,1,0,0,0,0,192,1,-1--1--1,,1|(8,166)|
+1,168,166,136,1,0,0,0,0,192,1,-1--1--1,,1|(10,218)|
+10,169,desired recycling share,645,404,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,170,desired recycling share delayed,805,402,75,30,8,3,0,2,-1,1,0,0,0-0-0,0-0-0,|||0-128-192,0,0,0,0,0,0
+1,171,170,169,1,0,0,0,0,192,0,-1--1--1,,1|(732,360)|
+1,172,169,170,1,0,0,0,0,192,0,-1--1--1,,1|(739,466)|
+1,173,130,169,1,0,0,0,0,64,0,-1--1--1,,1|(459,416)|
+1,174,120,169,1,0,0,0,0,64,0,-1--1--1,,1|(447,369)|
+10,175,initial desired recycling share,896,259,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,176,175,170,1,0,0,0,0,192,1,-1--1--1,,1|(869,337)|
+10,177,K Potential Output delay,1535,-691,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,178,Initial Capital O,1949,-707,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,179,178,177,1,0,0,0,0,64,1,-1--1--1,,1|(1765,-760)|
+1,180,73,177,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,181,74,177,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,182,177,77,1,0,0,0,0,192,0,-1--1--1,,1|(1478,-643)|
+10,183,Normal Output,1506,-588,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,184,73,183,1,0,0,0,0,192,0,-1--1--1,,1|(1556,-607)|
+1,185,14,183,1,0,0,0,0,192,0,-1--1--1,,1|(1492,-554)|
+10,186,Economic growth delay,1116,-506,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,187,186,87,1,0,0,0,0,192,0,-1--1--1,,1|(1185,-453)|
+10,188,Max waste goal,-128,379,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,189,Max temperature goal,-43,-111,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,190,189,124,1,0,0,0,0,192,0,-1--1--1,,1|(51,-79)|
+1,191,188,128,1,0,0,0,0,192,0,-1--1--1,,1|(-43,357)|
+10,192,Act policy reaction temperature,196,-196,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,193,192,125,1,0,0,0,0,192,0,-1--1--1,,1|(189,-134)|
+10,194,Act policy reaction waste,326,527,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,195,194,130,1,0,0,0,0,192,0,-1--1--1,,1|(318,450)|
+10,196,Mean temperature increase,-146,-48,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,197,196,124,1,0,0,0,0,192,0,-1--1--1,,1|(-39,2)|
+10,198,Inv O,201,-841,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,199,Inv ER,213,-877,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,200,Inv MR,230,-925,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,201,198,1,1,0,0,0,0,192,0,-1--1--1,,1|(308,-816)|
+1,202,199,1,1,0,0,0,0,192,0,-1--1--1,,1|(273,-877)|
+1,203,200,1,1,0,0,0,0,192,0,-1--1--1,,1|(325,-929)|
+10,204,total Capital stock,2363,-671,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,205,Capital O,2345,-798,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,206,Capital MR,2176,-660,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,207,Capital ER,2551,-666,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,208,206,204,1,0,0,0,0,192,0,-1--1--1,,1|(2252,-632)|
+1,209,205,204,1,0,0,0,0,192,0,-1--1--1,,1|(2380,-758)|
+1,210,207,204,1,0,0,0,0,192,0,-1--1--1,,1|(2493,-648)|
+10,211,total capital stock physical,2520,-817,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,212,204,211,1,0,0,0,0,192,0,-1--1--1,,1|(2491,-755)|
+10,213,Adaptation coefficient,2812,158,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,214,213,61,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,215,Depreciation MR delay,2092,543,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,216,Depreciation ER delay,2018,112,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+10,217,Depreciation O delay,2090,-511,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,218,12,217,1,0,0,0,0,192,0,-1--1--1,,1|(2026,-543)|
+1,219,32,216,1,0,0,0,0,192,0,-1--1--1,,1|(1909,83)|
+1,220,37,215,1,0,0,0,0,192,0,-1--1--1,,1|(1949,532)|
+10,221,Desired investment O,353,-681,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,222,Desired investment ER,343,-600,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,223,Desired investment MR,340,-513,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,224,221,90,1,0,0,0,0,192,0,-1--1--1,,1|(430,-677)|
+1,225,222,90,1,0,0,0,0,192,0,-1--1--1,,1|(439,-592)|
+1,226,223,90,1,0,0,0,0,192,0,-1--1--1,,1|(427,-532)|
+10,227,Material intensity output,2597,-736,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,228,227,211,1,0,0,0,0,64,0,-1--1--1,,1|(2576,-781)|
+10,229,Material intensity output,138,1258,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,230,required ER capital,797,-135,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,231,Capital productivity Renewable Energy,635,-332,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,232,231,230,1,0,0,0,0,64,0,-1--1--1,,1|(692,-224)|
+1,233,158,230,1,0,0,0,0,64,0,-1--1--1,,1|(655,-61)|
+10,234,Economic growth delay,987,-336,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,235,234,230,1,0,0,0,0,64,0,-1--1--1,,1|(912,-227)|
+10,236,Energy intensity output,861,-343,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,237,236,230,1,0,0,0,0,64,0,-1--1--1,,1|(822,-248)|
+10,238,Output delay,553,-275,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,239,required net investment ER,1062,-226,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,240,230,239,1,0,0,0,0,192,0,-1--1--1,,1|(887,-128)|
+10,241,Capital ER,1201,-295,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,242,241,239,1,0,0,0,0,192,0,-1--1--1,,1|(1162,-297)|
+1,243,32,40,1,0,0,0,0,64,0,-1--1--1,,1|(1853,-89)|
+1,244,239,40,1,0,0,0,0,64,0,-1--1--1,,1|(1402,-221)|
+10,245,desired final demand delay,755,-320,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,246,245,230,1,0,0,0,0,64,0,-1--1--1,,1|(758,-235)|
+1,247,238,230,1,0,0,0,0,192,0,-1--1--1,,1|(620,-209)|
+10,248,E constraint tightness delay,920,-49,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,249,248,230,1,0,0,0,0,192,0,-1--1--1,,1|(860,-64)|
+10,250,required MR capital,802,585,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,251,required net investment MR,1079,605,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,252,169,250,1,0,0,0,0,192,0,-1--1--1,,1|(653,493)|
+1,253,250,251,1,0,0,0,0,192,0,-1--1--1,,1|(931,628)|
+1,254,251,52,1,0,0,0,0,192,0,-1--1--1,,1|(1418,625)|
+10,255,desired final demand delay,597,660,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,256,255,250,1,0,0,0,0,64,0,-1--1--1,,1|(706,641)|
+10,257,Economic growth delay,645,736,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,258,257,250,1,0,0,0,0,64,0,-1--1--1,,1|(726,674)|
+10,259,Material intensity output,852,734,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,260,259,250,1,0,0,0,0,64,0,-1--1--1,,1|(802,665)|
+10,261,Output delay,915,694,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,262,261,250,1,0,0,0,0,64,0,-1--1--1,,1|(873,680)|
+10,263,Capital productivity recycling,773,779,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,264,263,250,1,0,0,0,0,64,0,-1--1--1,,1|(760,695)|
+10,265,M constraint tightness delay,951,485,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,266,265,250,1,0,0,0,0,192,0,-1--1--1,,1|(863,501)|
+10,267,Capital MR,1153,713,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,268,267,251,1,0,0,0,0,192,0,-1--1--1,,1|(1093,710)|
+1,269,37,52,1,0,0,0,0,192,0,-1--1--1,,1|(1789,519)|
+10,270,Maximum useful MR capital,565,583,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,271,263,270,1,0,0,0,0,192,0,-1--1--1,,1|(543,783)|
+1,272,108,270,1,0,0,0,0,192,0,-1--1--1,,1|(429,606)|
+1,273,270,250,1,0,0,0,0,192,0,-1--1--1,,1|(644,605)|
+12,274,0,2166,-738,136,54,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,256,0,0,0
+There are 3 types of capital, used in the production of:|<<NnN>>|- Output (Capital O)|<<NnN>>|- Renewable energy (Capital ER)|<<NnN>>|- Recycled materials (Capital MR)|<<NnN>>||<<NnN>>|There are 3 corresponding types of investment as well.
+12,275,0,2369,-552,83,36,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Capital stocks increase with investment (differentiated into3 types as well) and decrease with depreciation.
+12,276,0,2549,38,83,36,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The depreciation rate is the same for all types of capital, affected by climate damages and adaptation policy if active.
+12,277,0,1860,225,62,35,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+All 3 types of investment are ultimetely constrained by the rationing rule.
+12,278,0,1180,-576,96,42,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Investment O is proportional to output and follows an accelerator principle: the propensity to invest increases when capacity utilization is above normal capacity (exogenous).
+12,279,0,1449,-771,102,41,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The rate of capacity utilization is the ratio of final demand to potential output: measures how much of the installed productive capacity is being used.
+12,280,0,1809,-629,69,44,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The 'Capital potential output' is the maximum output that can be produced by using the total available stock of capital O, given an exogenous capital-output technical coefficient.
+12,281,0,223,177,129,46,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Investment in renewable energy/recycling depends on source constraints (how close is output to its ER/MR potential level) and sink constraints (how close is temperature increase/waste to a given goal). A reaction exponent determines how fast is the reaction.
+12,282,0,649,207,96,32,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+When the source or sink constraints approach, the desired share of ER/MR increases.
+12,283,0,1136,-124,98,65,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+The required ER/MR investment (to meet the desired ER/MR share) is determined by the outstanding ER/MR capital stock, lagged output, and respective output intensities. Such investment is constrained by the energy/materials needs of the economy (no additional investment is required if there is no demand).
+12,284,0,1467,-151,101,30,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Planned ER/MR investment is the required  one adjusted by an exogenous adjustment pace (how fast the required capital is built).
+12,285,0,1434,221,60,44,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+ER/MR investment is constrained by a maximum level of investment increase.
+12,286,0,1085,79,85,24,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Investment in renewable energy can be exogenously increased by policy.
+12,287,0,3073,50,81,30,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+When active, adaptation policies gradually reduce the impact of climate change on capital depreciation
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*6. Output
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,Final demand,962,403,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Profits,755,1104,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Output,682,629,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,1,3,1,0,0,0,0,192,0,-1--1--1,,1|(833,609)|
+10,5,Final demand delay,1216,477,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,6,1,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,7,Output delay,706,515,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,8,3,7,1,0,0,0,0,64,0,-1--1--1,,1|(748,583)|
+10,9,E Potential Output,68,546,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,10,Potential output,320,451,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,11,9,10,1,0,0,0,0,192,0,-1--1--1,,1|(215,535)|
+10,12,Potential output delay,192,373,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,13,10,12,1,0,0,0,0,128,0,-1--1--1,,1|(259,392)|
+10,14,Rationing rule,552,347,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,M potential output,107,622,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,16,15,10,1,0,0,0,0,128,0,-1--1--1,,1|(237,577)|
+10,17,Labour share,553,1108,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,18,Economic growth,575,577,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,19,Initial Final demand,1454,425,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,20,19,5,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,21,Initial Potential output,-2,291,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,22,21,12,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,23,Initial Output,706,388,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,24,23,7,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,25,3,18,1,0,0,0,0,64,0,-1--1--1,,1|(610,631)|
+1,26,7,18,1,0,0,0,0,64,0,-1--1--1,,1|(604,502)|
+10,27,Consumption,1205,372,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,28,Loans interest payment,857,1285,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,29,Loans payment,1059,1326,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,30,K Potential Output,41,465,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,31,30,10,1,0,0,0,0,64,0,-1--1--1,,1|(187,498)|
+10,32,Investment,1130,214,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,33,Labour income,508,1211,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,34,33,2,1,0,0,0,0,64,0,-1--1--1,,1|(644,1194)|
+1,35,33,17,1,0,0,0,0,64,0,-1--1--1,,1|(527,1145)|
+1,36,32,1,1,0,0,0,0,192,0,-1--1--1,,1|(1015,260)|
+1,37,27,1,1,0,0,0,0,192,0,-1--1--1,,1|(1049,358)|
+10,38,desired final demand,370,220,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,desired consumption,352,120,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,40,39,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,41,desired government spending,203,187,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,42,41,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,43,Desired investment,219,124,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,44,43,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,45,38,14,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,46,10,14,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,47,Post interest profits,976,1164,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Distributed profits,1172,1239,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,49,2,47,1,0,0,0,0,192,0,-1--1--1,,1|(899,1108)|
+1,50,47,48,1,0,0,0,0,192,0,-1--1--1,,1|(1082,1163)|
+1,51,28,47,1,0,0,0,0,192,0,-1--1--1,,1|(887,1219)|
+1,52,29,48,1,0,0,0,0,192,0,-1--1--1,,1|(1083,1262)|
+10,53,L Potential Output,67,406,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,54,53,10,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,55,Unit labour cost,974,635,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Unit debt service cost,1025,709,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Unit capital cost,1010,790,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Price,807,768,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,59,55,58,1,0,0,0,0,192,0,-1--1--1,,1|(889,723)|
+1,60,56,58,1,0,0,0,0,192,0,-1--1--1,,1|(900,766)|
+1,61,57,58,1,0,0,0,0,192,0,-1--1--1,,1|(886,790)|
+10,62,Mark up,510,716,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,63,62,58,1,0,0,0,0,192,0,-1--1--1,,1|(651,716)|
+10,64,Nominal output,685,991,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,65,3,64,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,66,58,64,1,0,0,0,0,192,0,-1--1--1,,1|(728,872)|
+1,67,64,17,1,0,0,0,0,192,0,-1--1--1,,1|(638,1005)|
+1,68,64,2,1,0,0,0,0,192,0,-1--1--1,,1|(730,1027)|
+1,69,14,62,1,0,0,0,0,192,0,-1--1--1,,1|(477,549)|
+10,70,Mark up delay,413,814,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,71,62,70,1,0,0,0,0,192,0,-1--1--1,,1|(413,763)|
+1,72,70,62,1,0,0,0,0,192,0,-1--1--1,,1|(499,802)|
+10,73,Initial mark up,310,906,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,74,73,70,1,0,0,0,0,192,1,-1--1--1,,1|(393,909)|
+10,75,Price delay,937,913,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,76,58,75,1,0,0,0,0,192,0,-1--1--1,,1|(831,820)|
+1,77,75,57,1,0,0,0,0,192,0,-1--1--1,,1|(981,879)|
+10,78,desired final demand delay,501,152,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,79,38,78,1,0,0,0,0,192,0,-1--1--1,,1|(486,202)|
+10,80,Initial Final demand,664,66,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,81,80,78,1,0,0,0,0,64,1,-1--1--1,,1|(583,92)|
+10,82,Inflation,891,1014,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,83,58,82,1,0,0,0,0,192,0,-1--1--1,,1|(784,882)|
+1,84,75,82,1,0,0,0,0,192,0,-1--1--1,,1|(885,959)|
+10,85,Inflation delay,1008,1027,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,86,82,85,1,0,0,0,0,192,0,-1--1--1,,1|(929,984)|
+10,87,Economic growth delay,589,439,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-192,0,0,0,0,0,0
+1,88,18,87,1,0,0,0,0,192,0,-1--1--1,,1|(546,521)|
+1,89,118,57,1,0,0,0,0,192,0,-1--1--1,,1|(1119,794)|
+10,90,Desired adaptation cost,171,236,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,91,90,38,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,92,Labour income delay,1084,530,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,93,92,55,1,0,0,0,0,64,0,-1--1--1,,1|(1007,570)|
+10,94,Loans interest payment delay,1244,663,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,95,94,56,1,0,0,0,0,64,0,-1--1--1,,1|(1151,653)|
+10,96,Depreciation ER delay,1174,925,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,97,96,57,1,0,0,0,0,64,0,-1--1--1,,1|(1082,883)|
+10,98,Depreciation MR delay,1223,880,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,99,98,57,1,0,0,0,0,64,0,-1--1--1,,1|(1132,860)|
+10,100,Depreciation O delay,1300,825,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,101,100,57,1,0,0,0,0,64,0,-1--1--1,,1|(1170,827)|
+10,102,Total government spending,1171,279,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,103,102,1,1,0,0,0,0,192,0,-1--1--1,,1|(1059,296)|
+10,104,Mark up adjustment speed,554,877,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,105,104,62,1,0,0,0,0,192,0,-1--1--1,,1|(586,771)|
+10,106,Mark up rationing sensitivity,558,928,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,107,106,62,1,0,0,0,0,192,0,-1--1--1,,1|(635,844)|
+1,108,7,55,1,0,0,0,0,64,0,-1--1--1,,1|(870,524)|
+10,109,Mark up reduction parameter,-80,774,73,25,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,110,Base mark up,347,746,54,22,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,111,73,110,1,0,0,0,0,192,0,-1--1--1,,1|(294,803)|
+1,112,110,62,1,0,0,0,0,192,0,-1--1--1,,1|(391,705)|
+10,113,Mark up reduction policy,123,844,73,25,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,114,Activate Wage Increase,-84,878,64,25,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,115,114,113,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,116,109,113,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,117,113,110,1,0,0,0,0,192,0,-1--1--1,,1|(231,779)|
+10,118,Normal Output,1198,746,40,24,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,119,118,56,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+12,120,0,701,204,80,40,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Output is demand-led but supply constrained: the minimum between final demand and potential output
+12,121,0,847,450,77,45,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Demand-led: Final demand comes from households consumption, government spending, and investment (closed global economy).
+12,122,0,700,326,94,37,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+When desired demand exceeds potential output, realized final demand is adjusted to the appropriate level by a rationing rule.
+12,123,0,355,334,88,43,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Supply constraints: Potential output is the minimum between the highest technical levels of output given by available labor, capital, energy, and materials.
+12,124,0,798,687,83,33,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Price of output set as a mark-up over unit costs (labour, debt service, and capital depreciation).
+12,125,0,386,1002,95,55,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Scarcity impact on the price level: The mark-up is constant unless the rationing rule is active. In that case, mark-up increases proportionally and gradually returns to its base level when  supply constraint is not binding anymore.
+12,126,0,89,906,58,31,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+A labor-market redistribution policy reduces the mark-up.
+12,127,0,572,1284,98,39,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Real values multiplied by the price give nominal values. Nominal output is split between wages and profits (functional distribution of income).
+12,128,0,1273,1181,94,26,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+What remains of profits after interest payments and debt repayment is distributed to capitalist households.
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*7. Climate change
+$192-192-192,0,Corbel|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,2
+10,1,CO2 intensity,123,448,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,2,CO2,474,429,43,30,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,341,444,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,3,100,0,0,22,0,192,0,-1--1--1,,1|(362,444)|
+1,5,6,2,4,0,0,22,0,192,0,-1--1--1,,1|(408,444)|
+11,6,0,380,444,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Fossil emissions,380,482,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,1,7,1,0,0,0,0,192,0,-1--1--1,,1|(236,485)|
+10,9,Forests,472,246,42,22,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,10,Deforestation intensity of output,256,111,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,11,Forest carrying capacity,799,391,75,30,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,12,Initial Forest stock,435,135,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,13,12,9,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,14,Maximum forest regeneration rate,761,304,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,15,Reforestation,893,197,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,16,Activate Reforestation,994,113,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,17,16,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,18,Preindustrial temperature,528,740,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,19,Mean temperature,473,617,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,20,2,19,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,21,18,19,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,22,125,19,1,0,0,0,0,192,0,-1--1--1,,1|(437,567)|
+10,23,Temperature sensitivity to CO2 increase,263,647,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,24,23,19,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,25,Reforestation rate,827,95,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,26,25,15,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,27,Mean temperature increase,773,678,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,28,19,27,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,29,18,27,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,30,Pessimistic capital damage function,1018,599,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,31,Pessimistic labour damage function,1019,769,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,32,27,30,1,0,0,0,0,128,0,-1--1--1,,1|(888,622)|
+1,33,27,31,1,0,0,0,0,128,0,-1--1--1,,1|(881,737)|
+10,34,Pessimistic mortality damage function,934,919,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,35,27,34,1,0,0,0,0,128,0,-1--1--1,,1|(835,805)|
+10,36,Capital Extreme Events,1341,550,70,34,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,37,38,36,4,0,0,22,0,0,0,-1--1--1,,1|(1238,544)|
+11,38,0,1200,544,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,39,Accumulated Capital Damages,1200,582,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Capital Extreme Event Shock,1514,505,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,41,Mortality Extreme Events,1374,779,73,31,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,42,43,41,4,0,0,22,0,0,0,-1--1--1,,1|(1263,764)|
+11,43,0,1219,764,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,44,Accumulated Mortality Damages,1219,802,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Labour Extreme Events,1347,667,72,29,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,46,47,45,4,0,0,22,0,0,0,-1--1--1,,1|(1239,643)|
+11,47,0,1198,643,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,48,Accumulated Labour Damages,1198,681,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Mortality Extreme Event Shock,1578,842,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,50,Labour Extreme Event Shock,1554,677,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,51,36,40,1,0,0,0,0,128,0,-1--1--1,,1|(1418,477)|
+1,52,41,49,1,0,0,0,0,128,0,-1--1--1,,1|(1511,790)|
+1,53,45,50,1,0,0,0,0,128,0,-1--1--1,,1|(1471,707)|
+10,54,Optimistic capital damage function,926,462,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,55,Optimistic mortality damage function,995,858,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,56,27,54,1,0,0,0,0,128,0,-1--1--1,,1|(824,565)|
+1,57,27,55,1,0,0,0,0,128,0,-1--1--1,,1|(855,773)|
+10,58,Optimistic labour damage function,972,527,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,59,27,58,1,0,0,0,0,128,0,-1--1--1,,1|(891,563)|
+10,60,Mean temperature increase,1710,706,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,61,60,49,1,0,0,0,0,128,0,-1--1--1,,1|(1661,786)|
+1,62,55,44,1,0,0,0,0,128,0,-1--1--1,,1|(1099,809)|
+1,63,60,50,1,0,0,0,0,128,0,-1--1--1,,1|(1628,662)|
+1,64,60,40,1,0,0,0,0,128,0,-1--1--1,,1|(1681,584)|
+1,65,31,48,1,0,0,0,0,64,0,-1--1--1,,1|(1126,742)|
+1,66,30,39,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,67,Time damage accumulation,1236,477,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,68,67,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,69,70,48,1,0,0,0,0,192,0,-1--1--1,,1|(1268,719)|
+10,70,Time damage accumulation,1371,727,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,71,70,44,1,0,0,0,0,192,0,-1--1--1,,1|(1289,740)|
+10,72,TPO1,1097,426,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,73,TPO2,1065,461,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,74,73,54,1,0,0,0,0,192,0,-1--1--1,,1|(1034,439)|
+1,75,72,54,1,0,0,0,0,192,0,-1--1--1,,1|(1036,416)|
+10,76,TPP1,912,685,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,77,TPP2,958,677,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,78,76,30,1,0,0,0,0,192,0,-1--1--1,,1|(953,637)|
+1,79,77,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,80,72,58,1,0,0,0,0,192,0,-1--1--1,,1|(1062,497)|
+1,81,73,58,1,0,0,0,0,192,0,-1--1--1,,1|(1021,509)|
+1,82,77,31,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,83,76,31,1,0,0,0,0,192,0,-1--1--1,,1|(958,728)|
+10,84,TPMP1,829,963,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,85,TPMP2,868,1024,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,86,TPMO1,1110,919,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,87,TPMO2,1191,883,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+1,88,86,55,1,0,0,0,0,192,0,-1--1--1,,1|(1088,887)|
+1,89,87,55,1,0,0,0,0,192,0,-1--1--1,,1|(1117,856)|
+1,90,84,34,1,0,0,0,0,192,0,-1--1--1,,1|(868,915)|
+1,91,85,34,1,0,0,0,0,192,0,-1--1--1,,1|(875,966)|
+1,92,94,2,100,0,0,22,0,192,0,-1--1--1,,1|(587,429)|
+1,93,94,9,4,0,0,22,0,192,0,-1--1--1,,1|(587,246)|
+11,94,0,587,337,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,95,Carbon sequestration,587,362,60,19,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,96,11,95,1,0,0,0,0,64,0,-1--1--1,,1|(716,388)|
+1,97,9,95,1,0,0,0,0,64,0,-1--1--1,,1|(509,337)|
+1,98,14,95,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,99,101,9,100,0,0,22,0,192,0,-1--1--1,,1|(378,246)|
+1,100,101,2,4,0,0,22,0,192,0,-1--1--1,,1|(378,429)|
+11,101,0,378,319,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,102,Land use emissions,378,345,46,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,103,10,102,1,0,0,0,0,64,0,-1--1--1,,1|(342,219)|
+10,104,Output,156,290,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,105,104,102,1,0,0,0,0,64,0,-1--1--1,,1|(221,326)|
+10,106,Fossil energy,211,565,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,107,106,7,1,0,0,0,0,192,0,-1--1--1,,1|(285,553)|
+10,108,O2 used,111,375,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,109,7,108,1,0,0,0,0,192,0,-1--1--1,,1|(242,454)|
+10,110,Fossil extraction,-58,330,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,111,110,108,1,0,0,0,0,192,0,-1--1--1,,1|(57,331)|
+1,112,15,95,1,0,0,0,0,192,0,-1--1--1,,1|(703,245)|
+10,113,Total emissions,226,386,42,25,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,114,102,113,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,115,7,113,1,0,0,0,0,192,0,-1--1--1,,1|(256,431)|
+12,116,0,95,516,82,34,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Fossil emissions are proportional to the amount of energy produced from fossil fuels (which is itself proportional to output).
+12,117,0,621,483,88,33,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+CO2 concentration is the result of two compensating flows: total CO2 emissions and carbon sequestration (forests as carbon sink).
+12,118,0,617,182,98,46,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Carbon sequestration is equivalent to forest regeneration (everything measured in Tons of carbon), following a logistic growth curve.  Land's carrying capacity can be increased by a reforestation policy.
+12,119,0,220,224,85,47,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Economic output drives deforestation at an exogenous rate through land-use changes, contributing to total CO2 emissions.
+12,120,0,362,720,82,34,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+CO2 concentration increases average temperature w.r.t. preindustrial value: 0.8°C increase each time that concentration doubles w.r.t. initial level.
+12,121,0,710,783,82,34,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Mean temperature increase (w.r.t. preindustrial level) measures the extent of climate change.
+12,122,0,1262,388,58,32,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,256,0,0,0
+Types of damage:|<<NnN>>|- Mortality|<<NnN>>|- Labour productivity|<<NnN>>|- Capital depreciation|<<NnN>>|
+12,123,0,1323,339,119,10,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+3 x 3 climate damage functions
+12,124,0,1385,394,57,38,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,256,0,0,0
+Strength of damages:|<<NnN>>|- No damages (0)|<<NnN>>|- Pessimistic (1)|<<NnN>>|- Optimistic (2)|<<NnN>>|- Extreme events (3)
+10,125,Initial CO2,340,559,57,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,126,125,2,1,0,0,0,0,64,1,-1--1--1,,1|(423,510)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Initial Conditions
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,Initial Capital ER,1109,451,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,Initial disposable capital income,905,357,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,3,Initial captial MR,1109,507,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,4,Initial Capital O,1109,398,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,5,Initial CO2,1525,241,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,6,Initial Potential output,1307,280,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,7,Initial unemployment rate,712,344,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,8,Initial Deposit,905,598,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,9,Initial Final demand,1307,333,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,10,Initial Forest stock,1525,300,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,11,Initial fossil stock,521,588,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,12,Initial Inv ER,1109,278,75,30,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,13,Initial Labour income,905,227,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,14,Initial Material stock,521,519,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,Initial Output,1307,229,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,16,Initial Population,312,215,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,17,Initial socioeconomic stock,521,381,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,18,Initial waste materials,521,453,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,19,Initial wage,712,273,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,20,Initial Inv MR,1109,334,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,21,Initial Inv O,1109,221,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,22,Initial government spending,905,427,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,23,Initial renewable energy share,1109,581,75,30,0,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,24,Initial recycled materials share,1109,629,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Initial loans,905,479,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Initial bonds,905,540,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Initial fossil energy,521,309,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Initial material extraction,521,259,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Initial unrecoverable waste,521,211,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Initial disposable labour income,905,291,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Initial mark up,1307,388,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Initial desired renewable share,1334,581,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,33,23,32,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,34,initial constraints tightness,1109,701,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,initial desired recycling share,1334,630,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,36,24,35,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,37,total capital stock physical,331,375,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,38,37,17,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,39,Initial labour productivity,712,216,48,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Parameters
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,Natality rate,271,208,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,2,Time policy,214,423,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||255-0-0,0,0,0,0,0,0
+10,3,Base mortality rate,279,293,56,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,4,Base energy intensity,458,217,52,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,5,Energy efficiency rate,461,293,59,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,6,Fossil energy content,461,361,57,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,7,Capacity factor fossil,472,430,52,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,8,Capital productivity Renewable Energy,478,505,81,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,9,Material efficiency rate,478,584,59,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,10,Base material intensity,476,650,56,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,11,Initial material extraction,466,708,58,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,12,Fraction of material disposal that is lost,460,778,64,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,13,Capital productivity recycling base,451,860,60,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,14,Base participation rate,691,226,74,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,15,Participation sensitivity to unemployment,700,301,62,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,16,Base labour productivity,707,383,52,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,17,Base labour productivity growth,705,444,51,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,18,Wage sensitivity inflation,702,509,68,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,19,Wage sensitivity productivity,703,576,68,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,20,Wage sensitivity unemployment,698,636,68,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,21,Government spending growth,905,222,69,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,22,Interest rate,916,295,56,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,23,Loans repayment rate,898,339,71,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,24,Consumption propensity of capital income,921,398,61,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,25,Consumption propensity of labour income,914,478,60,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,26,Consumption propensity of wealth,924,550,58,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,27,Output to capital ratio,1102,238,50,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,28,Normal capacity,1102,302,38,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,29,Investment sensitivity to utilization gap,1109,380,58,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,30,Renewables net investment adjustment pace,1101,469,67,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,31,Recycling net investment adjustment pace,1108,526,67,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,32,Base depreciation rate,1111,590,73,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,33,max scale increase,1109,658,44,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,34,Mark up adjustment speed,1282,216,72,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,35,Mark up rationing sensitivity,1278,290,73,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,36,Deforestation intensity of output,1480,208,57,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,37,CO2 intensity,1473,276,38,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,38,Maximum forest regeneration rate,1482,334,68,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,39,Forest carrying capacity,1484,387,64,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,40,Temperature sensitivity to CO2 increase,1474,462,69,33,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,41,Preindustrial temperature,1490,535,53,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,42,TPO1,1636,225,36,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,43,TPO2,1648,285,36,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,44,TPP1,1655,334,34,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,45,TPP2,1654,385,34,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,46,TPMO1,1663,422,44,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,47,TPMO2,1667,464,44,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,48,TPMP1,1661,518,42,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,49,TPMP2,1671,584,42,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,50,Time damage accumulation,1674,654,57,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Policies and scenarios
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+12,1,0,70,212,40,20,3,7,0,5,-1,0,0,0,0-128-0,192-255-192,|||0-0-0,-1,-1,0,0,0,0
+Emissions reduction
+12,2,0,70,61,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+OBJECTIVES
+12,3,0,70,396,40,20,3,7,0,4,-1,0,0,0,-1--1--1,192-128-192,|||0-0-0,-1,-1,0,0,0,0
+Inequality reduction
+12,4,0,243,162,40,30,3,7,0,5,-1,0,0,0,0-128-0,192-255-192,|||0-0-0,-1,-1,0,0,0,0
+RES - Expansion
+12,5,0,243,257,40,30,3,7,0,5,-1,0,0,0,0-128-0,192-255-192,|||0-0-0,-1,-1,0,0,0,0
+Energy Efficiency
+12,6,0,243,432,54,29,3,7,0,4,-1,0,0,0,-1--1--1,192-128-192,|||0-0-0,-1,-1,0,0,0,0
+Unemployment reduction
+12,7,0,243,344,40,30,3,7,0,4,-1,0,0,0,-1--1--1,192-128-192,|||0-0-0,-1,-1,0,0,0,0
+Wage Increase
+12,8,0,70,567,72,24,3,135,0,5,-1,0,0,0,0-64-128,192-255-255,|||0-0-0,-1,-1,0,0,0,0
+Dematerialization
+12,9,0,243,619,56,30,3,135,0,5,-1,0,0,0,0-64-128,192-255-255,|||0-0-0,-1,-1,0,0,0,0
+Recycling Material Expansion
+12,10,0,243,514,50,30,3,135,0,5,-1,0,0,0,0-64-128,192-255-255,|||0-0-0,-1,-1,0,0,0,0
+Material intensity
+12,11,0,70,740,50,21,3,135,0,5,-1,0,0,0,64-64-128,128-255-0,|||0-0-0,-1,-1,0,0,0,0
+Adaptation to climate change
+10,12,Activate RES Expansion,572,162,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,13,51,12,1,0,0,0,0,64,0,-1--1--1,,1|(802,256)|
+1,14,53,12,1,0,0,0,0,64,0,-1--1--1,,1|(822,382)|
+10,15,Activate En Eff,572,257,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,16,51,15,1,0,0,0,0,128,0,-1--1--1,,1|(751,286)|
+1,17,53,15,1,0,0,0,0,128,0,-1--1--1,,1|(815,445)|
+10,18,Activate Wage Increase,572,344,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,19,51,18,1,0,0,0,0,128,0,-1--1--1,,1|(756,357)|
+1,20,53,18,1,0,0,0,0,128,0,-1--1--1,,1|(803,481)|
+10,21,Activate WTR,572,432,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,22,53,21,1,0,0,0,0,128,0,-1--1--1,,1|(780,510)|
+1,23,51,21,1,0,0,0,0,128,0,-1--1--1,,1|(723,398)|
+10,24,Activate Material Efficiency,572,514,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,51,24,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,26,53,24,1,0,0,0,0,64,0,-1--1--1,,1|(813,550)|
+10,27,Activate Recycling,572,619,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,28,51,27,1,0,0,0,0,128,0,-1--1--1,,1|(779,548)|
+1,29,53,27,1,0,0,0,0,128,0,-1--1--1,,1|(762,639)|
+10,30,Activate Adaptation Capital,572,773,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,31,51,30,1,0,0,0,0,128,0,-1--1--1,,1|(794,665)|
+1,32,53,30,1,0,0,0,0,128,0,-1--1--1,,1|(770,752)|
+10,33,Act RES,384,162,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,34,Act EnEff,384,257,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,35,Act Wage,384,344,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,36,Act WTR,384,432,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,37,Act MatEff,384,514,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,38,Act Rec,384,619,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,39,Act Adapt Capital,384,773,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,40,33,12,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,41,34,15,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,42,35,18,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,43,36,21,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,44,37,24,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,45,38,27,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,46,39,30,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+12,47,0,243,1025,49,75,3,135,0,5,-1,0,0,0,64-64-128,255-128-192,|||0-0-0,-1,-1,0,0,0,0
+Degrowth
+10,48,Act Degrowth,384,999,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,49,Activate degrowth policy,572,999,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,50,48,49,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,51,Time,895,428,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,52,51,49,1,0,0,0,0,64,0,-1--1--1,,1|(800,722)|
+10,53,Time policy,906,608,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,54,53,49,1,0,0,0,0,64,0,-1--1--1,,1|(813,869)|
+10,55,Act Reforestation,384,700,75,30,8,3,0,0,0,1,0,0,0,0,0,0,0,0
+10,56,Activate Reforestation,572,700,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,57,55,56,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,58,53,56,1,0,0,0,0,128,0,-1--1--1,,1|(769,718)|
+1,59,51,56,1,0,0,0,0,128,0,-1--1--1,,1|(755,602)|
+12,60,0,243,61,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+POLICIES
+12,61,0,384,61,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+ACTIVATION SWITCHS
+12,62,0,572,61,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+ACTIVATION TIMING
+12,63,0,1558,54,50,19,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+OTHER HYPOTHESIS
+10,64,Act Labour Damages,1774,139,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,65,Act Capital Damages,1774,209,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,66,Act Mortality Damages,1774,285,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,67,0,1763,60,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+ACTIVATION SWITCHES
+12,68,0,1366,59,31,5,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+AREA
+12,69,0,1364,209,55,40,3,135,0,4,-1,0,0,0,-1--1--1,255-128-0,|||0-0-0,0,0,0,0,0,0
+Climate change damages
+12,70,0,1553,139,72,26,3,135,0,4,-1,0,0,0,-1--1--1,255-128-0,|||0-0-0,0,0,0,0,0,0
+Labour damages
+12,71,0,1553,209,72,26,3,135,0,4,-1,0,0,0,-1--1--1,255-128-0,|||0-0-0,0,0,0,0,0,0
+Capital damages
+12,72,0,1555,285,72,26,3,135,0,4,-1,0,0,0,-1--1--1,255-128-0,|||0-0-0,0,0,0,0,0,0
+Mortality damages
+12,73,0,2110,58,72,19,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+SCENARIO PARAMETERS
+10,74,Pessimistic capital damage function,2008,209,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,75,Pessimistic labour damage function,2008,139,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,76,Labour Extreme Event Shock,2377,143,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,77,Capital Extreme Event Shock,2377,213,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,78,Pessimistic mortality damage function,2008,285,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,79,Mortality Extreme Event Shock,2377,289,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,80,Act Adapt Labour,386,836,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,81,Act Adapt Mortality,384,899,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,82,Activate Adaptation Labour,572,831,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,83,80,82,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,84,Activate Adaptation Mortality,572,899,75,30,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,85,Time,634,1074,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,86,Time policy,634,1074,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,87,Time,646,1142,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,88,Time policy,646,1142,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,89,53,84,1,0,0,0,0,128,0,-1--1--1,,1|(797,823)|
+1,90,53,82,1,0,0,0,0,128,0,-1--1--1,,1|(762,785)|
+1,91,51,82,1,0,0,0,0,128,0,-1--1--1,,1|(781,679)|
+1,92,51,84,1,0,0,0,0,128,0,-1--1--1,,1|(814,712)|
+1,93,81,84,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,94,Optimistic capital damage function,2194,209,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,95,Optimistic mortality damage function,2194,285,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,96,Optimistic labour damage function,2194,139,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,97,Act policy reaction temperature,1774,417,87,28,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,98,Act policy reaction waste,1774,497,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,99,Reaction exponent,2194,445,75,30,8,2,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||128-128-128,0,0,0,0,0,0
+10,100,Max temperature goal,2008,417,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,101,Max waste goal,2008,497,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,102,Act combine Degrowth WTR,384,1057,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,103,0,243,700,54,32,3,135,0,5,-1,0,0,0,64-64-128,128-255-0,|||0-0-0,-1,-1,0,0,0,0
+Reforestation
+12,104,0,243,832,53,82,3,135,0,5,-1,0,0,0,64-64-128,128-255-0,|||0-0-0,-1,-1,0,0,0,0
+Adaptation policies
+12,105,0,1368,445,55,40,3,135,0,7,-1,0,0,0,0-0-0,255-128-128,|||0-0-0,0,0,0,0,0,0
+Reactive mitigation
+12,106,0,1556,417,74,21,3,135,0,7,-1,0,0,0,0-0-0,255-128-128,|||0-0-0,0,0,0,0,0,0
+Temperature reaction
+12,107,0,1557,497,74,21,3,135,0,7,-1,0,0,0,0-0-0,255-128-128,|||0-0-0,0,0,0,0,0,0
+Waste reaction
+10,108,Recycling improvement rate,1080,619,72,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,109,Adaptation coefficient,1080,796,72,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,110,WTR max,1080,412,52,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,111,WTR rate,1080,441,50,12,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,112,Wage growth policy rate,1080,370,57,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,113,Base adaptation cost,1080,849,66,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,114,Degrowth rate,1080,999,44,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,115,RES expansion rate,1080,162,61,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,116,Mark up reduction parameter,1080,325,66,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,117,Reforestation rate,1080,700,57,23,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+12,118,0,1080,61,62,32,8,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+POLICY PARAMETERS
+10,119,WTR degrowth coefficient,1090,1057,55,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+12,120,0,841,-46,142,47,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Policies and scenarios are modelled as shocks to key parameters at a given period (Time policy). They are acivated by 'Activation switches', affect other model variables through 'Activation timing', and their impact is controlled through policy or scenario parameters.
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Results
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+12,1,0,2872,1225,303,280,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+Limits
+12,2,0,2929,694,298,198,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+Unemployment_rate
+12,3,0,317,1251,305,196,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+Climate_change
+10,4,Nominal output,-889,757,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,5,Public debt to output ratio,-625,728,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,6,4,5,1,0,0,0,0,192,0,-1--1--1,,1|(-753,769)|
+10,7,Stock of Loans,-874,625,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,8,Total debt to output ratio,-625,671,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,7,8,1,0,0,0,0,192,0,-1--1--1,,1|(-738,627)|
+1,10,4,8,1,0,0,0,0,192,0,-1--1--1,,1|(-763,735)|
+12,11,0,322,224,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Debt_to_GDP
+10,12,Output,-839,529,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,13,Population,-871,460,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,14,Output per capita,-625,508,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,15,12,14,1,0,0,0,0,192,0,-1--1--1,,1|(-715,553)|
+1,16,13,14,1,0,0,0,0,192,0,-1--1--1,,1|(-719,448)|
+12,17,0,1647,236,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+GDP_per_capita
+12,18,0,1606,1256,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Emissions_per_capita
+10,19,Consumption,-837,409,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,20,Price,-827,362,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,21,Real consumption per capita,-625,411,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,19,21,1,0,0,0,0,192,0,-1--1--1,,1|(-690,417)|
+1,23,20,21,1,0,0,0,0,192,0,-1--1--1,,1|(-751,372)|
+1,24,13,21,1,0,0,0,0,192,0,-1--1--1,,1|(-717,482)|
+10,25,Annual wage,-816,291,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,26,Real wage,-625,315,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,27,25,26,1,0,0,0,0,192,0,-1--1--1,,1|(-736,298)|
+1,28,20,26,1,0,0,0,0,192,0,-1--1--1,,1|(-722,351)|
+12,29,0,2292,248,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Real_wage
+10,30,Fossil emissions,-910,952,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,31,Output,-872,833,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,32,Carbon intensity,-625,876,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,33,30,32,1,0,0,0,0,192,0,-1--1--1,,1|(-814,896)|
+1,34,31,32,1,0,0,0,0,192,0,-1--1--1,,1|(-738,836)|
+12,35,0,951,1259,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Carbon_intensity
+10,36,Population,-919,881,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,37,Emissions per capita,-625,946,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,38,30,37,1,0,0,0,0,192,0,-1--1--1,,1|(-806,922)|
+1,39,36,37,1,0,0,0,0,192,0,-1--1--1,,1|(-799,889)|
+12,40,0,2225,1277,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Cummulative_emissions
+10,41,Capital share,-625,229,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Labour share,-820,229,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,43,42,41,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,44,0,3567,253,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Distribution
+10,45,Cumulative emissions,-625,1023,61,23,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Initial CO2,-1296,749,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,47,CO2,-1296,749,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,48,30,45,1,0,0,0,0,192,0,-1--1--1,,1|(-791,1022)|
+12,49,0,983,236,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Output
+1,50,51,5,1,0,0,0,0,64,0,-1--1--1,,1|(-752,687)|
+10,51,Stock of bonds,-878,682,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,52,51,8,1,0,0,0,0,64,0,-1--1--1,,1|(-758,656)|
+12,53,0,3581,1152,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Inflation
+12,54,0,3574,702,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Population
+12,55,0,320,662,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Labour_Productivity
+10,56,total Capital stock,-858,1126,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,57,Output,-853,1200,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,58,Capital Productivity,-625,1167,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,59,56,58,1,0,0,0,0,192,0,-1--1--1,,1|(-742,1117)|
+1,60,57,58,1,0,0,0,0,192,0,-1--1--1,,1|(-726,1217)|
+12,61,0,976,679,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Capital_Productivity
+12,62,0,2910,254,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Wage_Index
+12,63,0,325,1682,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Material_Stock
+12,64,0,929,1686,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Waste
+12,65,0,1597,1711,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Recycling
+12,66,0,2234,1719,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Renewable_Share
+12,67,0,2882,1731,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Maximum_Renewable_Energy
+10,68,Government deficit,-868,1255,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,69,Output,-873,1315,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,70,Deficit to output ratio,-625,1283,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,71,68,70,1,0,0,0,0,192,0,-1--1--1,,1|(-761,1254)|
+1,72,69,70,1,0,0,0,0,192,0,-1--1--1,,1|(-728,1315)|
+10,73,Price,-849,1376,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,74,Real Government Deficit,-625,1352,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,75,68,74,1,0,0,0,0,192,0,-1--1--1,,1|(-782,1258)|
+1,76,73,74,1,0,0,0,0,192,0,-1--1--1,,1|(-734,1375)|
+12,77,0,1665,677,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Deficit_to_GDP
+12,78,0,2288,685,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Real_Government_Deficit
+10,79,Land use emissions,-915,1061,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,80,79,45,1,0,0,0,0,192,0,-1--1--1,,1|(-766,1061)|
+1,81,79,37,1,0,0,0,0,192,0,-1--1--1,,1|(-789,958)|
+10,82,Cumulative output,-625,566,42,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,83,12,82,1,0,0,0,0,192,0,-1--1--1,,1|(-775,579)|
+12,84,0,-625,134,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+INDICATORS
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*SFC checks
+$192-192-192,0,Calibri|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,Investment Savings identity,832,1022,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,2,Savings,960,934,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,3,2,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,4,Households transactions,1252,1328,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,5,Firms current account,1467,1374,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,6,Banks capital account,1649,1539,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,7,Government current account,1642,1334,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,8,net worth hh,1628,861,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,9,net worth firms,1613,686,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,10,net worth bank,1615,734,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,11,net worth government,1626,796,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,12,Labour income,1255,1181,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,13,Loans interest payment,1549,1141,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,14,12,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,15,12,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,16,13,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,17,Loans payment,1126,1485,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,18,Firms capital account,1333,1524,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+12,19,0,1409,1011,237,29,3,7,0,4,-1,0,0,0,0-0-0,192-192-192,|||0-0-0,0,0,0,0,0,0
+Transaction flows
+10,20,Stock of Deposits,1987,803,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,21,Capital O,1775,625,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,22,Capital ER,1899,600,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,23,Capital MR,1725,587,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,24,Stock of Loans,1825,752,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,25,24,9,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,26,23,9,1,0,0,0,0,192,0,-1--1--1,,1|(1682,644)|
+1,27,21,9,1,0,0,0,0,192,0,-1--1--1,,1|(1711,678)|
+1,28,22,9,1,0,0,0,0,192,0,-1--1--1,,1|(1792,671)|
+1,29,20,8,1,0,0,0,0,192,0,-1--1--1,,1|(1836,847)|
+1,30,20,10,1,0,0,0,0,192,0,-1--1--1,,1|(1853,710)|
+1,31,24,10,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,32,0,1434,507,237,29,3,7,0,4,-1,0,0,0,0-0-0,192-192-192,|||0-0-0,0,0,0,0,0,0
+Balance sheet
+10,33,net worth sum,1335,689,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+1,34,8,33,1,0,0,0,0,192,0,-1--1--1,,1|(1502,836)|
+1,35,10,33,1,0,0,0,0,192,0,-1--1--1,,1|(1513,729)|
+1,36,11,33,1,0,0,0,0,192,0,-1--1--1,,1|(1477,765)|
+1,37,9,33,1,0,0,0,0,192,0,-1--1--1,,1|(1497,649)|
+1,38,23,33,1,0,0,0,0,192,0,-1--1--1,,1|(1462,593)|
+1,39,21,33,1,0,0,0,0,192,0,-1--1--1,,1|(1513,595)|
+1,40,22,33,1,0,0,0,0,192,0,-1--1--1,,1|(1460,583)|
+10,41,Capital income,1018,1164,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,42,41,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,43,Post interest profits,1323,1142,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,44,43,5,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,45,17,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,46,New loans,1244,1625,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,47,Net change in Loans,1503,1626,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,48,47,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,49,47,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,50,New bonds,1429,1126,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,51,50,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,52,Bonds interest payment,1780,1142,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,53,52,7,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,54,50,7,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,55,Government deficit,600,951,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,56,55,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,57,Loans payment,629,1047,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,58,57,1,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,59,Nominal consumption,1201,1079,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,60,59,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,61,Nominal government spending,1630,1091,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,62,Nominal investment,1441,1179,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,63,62,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,64,61,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,65,59,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,66,61,7,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,67,Nominal investment,1138,1546,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,68,67,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,69,Price delay,1547,615,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,70,69,9,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,71,69,33,1,0,0,0,0,192,0,-1--1--1,,1|(1440,636)|
+10,72,Nominal investment,630,852,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,73,72,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,74,Income taxes,1425,1071,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,75,74,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,76,74,7,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,77,Households Wealth,1634,926,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,78,Change in deposits,1439,1446,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,79,78,6,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,80,78,4,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,81,Redundant equation LD,794,1337,75,30,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||0-128-0,0,0,0,0,0,0
+10,82,Stock of Loans,699,1276,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,83,Stock of Deposits,861,1262,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,84,82,81,1,0,0,0,0,192,0,-1--1--1,,1|(716,1335)|
+1,85,83,81,1,0,0,0,0,192,0,-1--1--1,,1|(863,1311)|
+10,86,Stock of bonds,1811,803,75,30,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,87,86,8,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,88,86,11,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,89,Initial material extraction,2240,981,75,30,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+12,90,0,2367,1198,301,278,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+SFC_checks_flows
+12,91,0,2368,694,303,201,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+SFC_checks_stocks
+12,92,0,2368,1699,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+SFC_checks_redundant_equation
+12,93,0,1077,700,69,37,3,7,0,4,-1,0,0,0,0-0-0,255-255-128,|||0-0-0,0,0,0,0,0,0
+Checks equal to zero guarantee that the model is stock-flow consistent.
+///---\\\
+:GRAPH Limits
+:TITLE Limits
+:X-AXIS Time
+:Y-DIV 3
+:LABEL-INTERVALS
+:SCALE
+:VAR Output
+:Y-MIN 0
+:Y-MAX 60000
+:DATASET *1
+:VAR M potential output
+:Y-MIN 0
+:Y-MAX 60000
+:DATASET *1
+:VAR K Potential Output
+:Y-MIN 0
+:Y-MAX 60000
+:DATASET *1
+:VAR L Potential Output
+:Y-MIN 0
+:Y-MAX 60000
+:DATASET *1
+
+:GRAPH Unemployment_rate
+:TITLE Unemployment rate
+:X-AXIS Time
+:SCALE
+:VAR Unemployment rate
+:DATASET *1
+
+:GRAPH Climate_change
+:TITLE Climate change
+:X-AXIS Time
+:SCALE
+:VAR Mean temperature increase
+:DATASET *1
+:VAR Mean temperature increase
+:DATASET *2
+
+:GRAPH Debt_to_GDP
+:TITLE Debt to GDP
+:X-AXIS time
+:SCALE
+:VAR Public debt to output ratio
+:Y-MAX 10
+:DATASET *1
+:SCALE
+:VAR Total debt to output ratio
+:Y-MAX 10
+:DATASET *1
+
+:GRAPH GDP_per_capita
+:TITLE GDP per capita
+:X-AXIS time
+:SCALE
+:VAR Output per capita
+:Y-MAX 0.5
+:DATASET *1
+
+:GRAPH Real_wage
+:TITLE Real wage
+:X-AXIS time
+:SCALE
+:VAR real wage
+:Y-MAX 0.5
+:DATASET *1
+:VAR real wage
+:DATASET *2
+
+:GRAPH Carbon_intensity
+:TITLE Carbon intensity
+:X-AXIS time
+:SCALE
+:VAR Carbon_intensity
+:Y-MAX 0.005
+:DATASET *1
+
+:GRAPH Emissions_per_capita
+:TITLE Emissions per capita
+:X-AXIS time
+:SCALE
+:VAR Emissions_per_capita
+:Y-MAX 0.001
+:DATASET *1
+
+:GRAPH Distribution
+:TITLE Distribution
+:X-AXIS time
+:SCALE
+:VAR Labour_share
+:Y-MIN 0.5
+:Y-MAX 1
+:DATASET *1
+
+:GRAPH Cummulative_emissions
+:TITLE Cummulative emissions
+:X-AXIS time
+:SCALE
+:VAR Cumulative_emissions
+:DATASET *1
+
+:GRAPH Output
+:TITLE Output
+:X-AXIS Time
+:SCALE
+:VAR Output
+:DATASET *1
+
+:GRAPH Output_0
+:TITLE Output
+:X-AXIS Time
+:SCALE
+:VAR Output
+:DATASET *1
+
+:GRAPH Wage_and_price
+:TITLE Wage and price
+:X-AXIS Time
+:SCALE
+:VAR Annual wage index
+:Y-MAX 20
+:DATASET *1
+:VAR Price
+:Y-MAX 20
+:DATASET *1
+
+:GRAPH Real_incomes_index
+:TITLE Real incomes index
+:X-AXIS time
+:SCALE
+:VAR Real labour income index
+:Y-MAX 6
+:DATASET *1
+:VAR Real capital income index
+:Y-MAX 6
+:DATASET *1
+
+:GRAPH Unemployment_inflation
+:TITLE Unemployment inflation
+:X-AXIS Time
+:SCALE
+:VAR Unemployment rate
+:Y-MAX 0.2
+:DATASET *1
+:SCALE
+:VAR Inflation
+:Y-MAX 0.1
+:DATASET *1
+
+:GRAPH Inflation
+:TITLE Inflation
+:SCALE
+:VAR Inflation
+:DATASET *1
+
+:GRAPH Utilization
+:TITLE Utilization
+:X-AXIS Time
+:SCALE
+:VAR Output
+:DATASET *1
+:SCALE
+:VAR Capacity utilization
+:Y-MIN 0.7
+:Y-MAX 0.9
+:DATASET *1
+
+:GRAPH Population
+:TITLE Population
+:SCALE
+:VAR Population
+:DATASET *1
+
+:GRAPH Labour_Productivity
+:TITLE Labour Productivity
+:SCALE
+:VAR Labour_productivity
+:DATASET *1
+
+:GRAPH Capital_Productivity
+:TITLE Capital Productivity
+:SCALE
+:VAR Capital_Productivity
+:DATASET *1
+
+:GRAPH Wage_Index
+:TITLE Wage Index
+:SCALE
+:VAR Annual wage index
+:DATASET *1
+
+:GRAPH Material_Stock
+:TITLE Material Stock
+:SCALE
+:VAR materials
+:DATASET *1
+
+:GRAPH Waste
+:TITLE Waste
+:SCALE
+:VAR Waste_materials
+:DATASET *1
+
+:GRAPH Recycling
+:TITLE Recycling
+:SCALE
+:VAR Recycled_materials
+:DATASET *1
+
+:GRAPH Renewable_Share
+:TITLE Renewable Share
+:SCALE
+:VAR Renewable Energy Share
+:DATASET *1
+
+:GRAPH Maximum_Renewable_Energy
+:TITLE Maximum Renewable Energy Generation
+:SCALE
+:VAR Maximum renewable energy generation
+:DATASET *1
+
+:GRAPH Deficit_to_GDP
+:TITLE Deficit to GDP
+:SCALE
+:VAR Deficit to output ratio
+:DATASET *1
+
+:GRAPH Real_Government_Deficit
+:TITLE Real Government Deficit
+:SCALE
+:VAR Real Government Deficit
+:DATASET *1
+
+:GRAPH SFC_checks_flows
+:TITLE SFC checks flows
+:SCALE
+:VAR Government current account
+:DATASET *1
+:VAR Firms curent account
+:DATASET *1
+:VAR Households transactions
+:DATASET *1
+:VAR Firms capital account
+:DATASET *1
+:VAR Banks capital account
+:DATASET *1
+:VAR Investment Savings identity
+:DATASET *1
+
+:GRAPH SFC_checks_stocks
+:TITLE SFC checks stocks (Net worth sum)
+:SCALE
+:VAR net worth sum
+:DATASET *1
+
+:GRAPH SFC_checks_redundant_equation
+:TITLE SFC checks redundant equation (Loans=Deposits)
+:SCALE
+:VAR Redundant equation LD
+:DATASET *1
+:L<%^E!@
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:1
+96:2
+97:0
+98:1
+77:0
+78:0
+102:1
+93:1
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:baseline.csv
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
