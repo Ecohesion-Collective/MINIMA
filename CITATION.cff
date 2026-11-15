@@ -23,6 +23,15 @@ authors:
   affiliation: "University of Pisa"
 title: "MINIMA: Minimal Nature-Integrated Macroeconomic Model"
 version: "1.0"
+keywords:
+  - integrated assessment modeling
+  - climate-economy interactions
+  - scenario analysis
+  - ecological transition
+  - post-growth
+  - ecological economics education
+  - system dynamics
+  - Vensim
 date-released: "2026-11-15"
 repository-code: "https://github.com/Ecohesion-Collective/MINIMA"
 license: "CC-BY-NC-4.0"
