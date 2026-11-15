@@ -32,3 +32,7 @@ Use in teaching and research is welcome. Commercial use requires permission from
 ## Contact
 
 For questions, bug reports or suggestions, please open an issue in this repository.
+
+## Acknowledgements
+
+MINIMA originated in work carried out within the LOCOMOTION project (Low-carbon society: an enhanced modelling tool for the transition to sustainability), funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No. 821105. D.C.O. acknowledges funding from the European Union’s Horizon 2022 Research and Innovation Programme under grant agreement No. 101094546 (WISER: Well-being in a Sustainable Economy Revisited). S.D. and T.H. acknowledge funding by the European Union in the framework of the Horizon Europe Research and Innovation Programme under grant agreement number 101137914 (MAPS: Models, Assessment, and Policies for Sustainability). Views and opinions expressed are however those of the authors only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them. Any remaining errors are our own. 
