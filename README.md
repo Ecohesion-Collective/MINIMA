@@ -14,3 +14,21 @@ The model represents a hypothetical global economy with modules for production, 
 2. Download the file **`minima.mdl`** from this repository.
 3. Open it in Vensim and run the simulations (see Appendices A and B of the chapter for the documentation and a Vensim tutorial).
 4. To explore the results of the chapter’s scenarios, download the `.vdfx` files, save them in the same folder as `minima.mdl`, and load them in Vensim as datasets.
+
+## Version
+
+This repository contains version 1.0 of the model, the one used to produce the results in the chapter.
+
+## How to cite
+
+If you use this model, please cite the repository using the "Cite this repository" button on the right (see `CITATION.cff`).
+
+## License
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). See the `LICENSE` file or https://creativecommons.org/licenses/by-nc/4.0/.
+
+Use in teaching and research is welcome. Commercial use requires permission from the authors.
+
+## Contact
+
+For questions, bug reports or suggestions, please open an issue in this repository.
