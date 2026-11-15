@@ -21,7 +21,8 @@ This repository contains version 1.0 of the model, the one used to produce the r
 
 ## How to cite
 
-If you use this model, please cite the repository using the "Cite this repository" button on the right (see `CITATION.cff`).
+If you use this model, please cite the repository using the "Cite this repository" button on the right (see `CITATION.cff`). 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24251996.svg)](https://doi.org/10.5281/zenodo.24251996)
 
 ## License
 
